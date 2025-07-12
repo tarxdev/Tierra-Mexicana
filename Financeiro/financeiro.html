@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/svg+xml" href="favicon8.svg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento Financeiro - Tierra Mexicana</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 'Cinzel Decorative' & 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e5e7eb;
+        }
+        .font-title {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        
+        /* Fundo animado com padrão SVG */
+        .animated-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bg-scroll 80s linear infinite;
+        }
+        @keyframes bg-scroll {
+            from { background-position: 0 0; }
+            to { background-position: -500px -500px; }
+        }
+
+        /* Estilo para as tabelas */
+        .custom-table th, .custom-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #374151; /* gray-700 */
+        }
+        .custom-table th {
+            background-color: rgba(251, 191, 36, 0.1); /* amber-400 com opacidade */
+            color: #fbbf24; /* amber-400 */
+            text-align: left;
+            font-weight: 600;
+        }
+        .custom-table tr:last-child td {
+            border-bottom: none;
+        }
+        .custom-table .total-row td {
+            font-weight: bold;
+            color: #f3f4f6; /* gray-100 */
+            background-color: #374151; /* gray-700 */
+        }
+    </style>
+</head>
+
+<body class="animated-bg">
+
+    <!-- Header Fixo -->
+    <header class="bg-black/70 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl sm:text-3xl font-title text-amber-400">Tierra Mexicana</h1>
+            <p class="hidden md:block text-gray-400">📊 Planejamento Financeiro</p>
+        </div>
+    </header>
+
+    <main class="w-full container mx-auto p-4 sm:p-6 md:p-10">
+        <!-- Grid principal para os cards de informações -->
+        <div class="space-y-8">
+
+            <!-- 1. Investimento Inicial -->
+            <section class="bg-gray-900/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-700">
+                <h2 class="text-2xl md:text-3xl font-title text-amber-400 mb-6 flex items-center gap-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    1. Investimento Inicial
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm sm:text-base custom-table">
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th class="text-right">Valor Estimado (R$)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300">
+                            <tr><td>Reforma do espaço (casarão 280 m²)</td><td class="text-right">60.000</td></tr>
+                            <tr><td>Equipamentos de cozinha industrial</td><td class="text-right">80.000</td></tr>
+                            <tr><td>Mobiliário (salão + mezanino)</td><td class="text-right">35.000</td></tr>
+                            <tr><td>Sistema de climatização</td><td class="text-right">12.000</td></tr>
+                            <tr><td>Equipamentos de informática e PDV</td><td class="text-right">6.000</td></tr>
+                            <tr><td>Licenças, registros e alvarás</td><td class="text-right">5.000</td></tr>
+                            <tr><td>Capital de giro (3 meses)</td><td class="text-right">30.000</td></tr>
+                            <tr><td>Marketing inicial e identidade visual</td><td class="text-right">5.000</td></tr>
+                            <tr class="total-row text-lg">
+                                <td>🔹 Investimento total estimado</td>
+                                <td class="text-right text-amber-400">R$ 233.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 2. Custos Fixos Mensais -->
+            <section class="bg-gray-900/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-700">
+                <h2 class="text-2xl md:text-3xl font-title text-amber-400 mb-6 flex items-center gap-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01" /></svg>
+                    2. Custos Fixos Mensais
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm sm:text-base custom-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-right">Valor (R$)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300">
+                            <tr><td>Aluguel do imóvel</td><td class="text-right">6.000</td></tr>
+                            <tr><td>Salários + encargos (8 funcionários)</td><td class="text-right">18.000</td></tr>
+                            <tr><td>Energia elétrica</td><td class="text-right">2.200</td></tr>
+                            <tr><td>Água e esgoto</td><td class="text-right">700</td></tr>
+                            <tr><td>Internet e telefone</td><td class="text-right">250</td></tr>
+                            <tr><td>Contabilidade e sistema de gestão</td><td class="text-right">500</td></tr>
+                            <tr><td>Licenciamento anual (provisionado)</td><td class="text-right">300</td></tr>
+                            <tr><td>Marketing mensal</td><td class="text-right">800</td></tr>
+                            <tr><td>Limpeza, descartáveis e higiene</td><td class="text-right">600</td></tr>
+                            <tr><td>Manutenção e pequenos reparos</td><td class="text-right">500</td></tr>
+                            <tr class="total-row text-lg">
+                                <td>🔹 Total de custos fixos mensais</td>
+                                <td class="text-right text-amber-400">R$ 29.850</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Grid com 2 colunas para as seções menores -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- 3. Custos Variáveis Mensais -->
+                <section class="bg-gray-900/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-700 h-full">
+                    <h2 class="text-2xl md:text-3xl font-title text-amber-400 mb-6 flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                        3. Custos Variáveis
+                    </h2>
+                    <div class="space-y-4 text-gray-300">
+                        <p>Estimativa baseada em <strong>800 clientes/mês</strong>:</p>
+                        <p><strong>CMV (Custo da Mercadoria Vendida):</strong> Média de 35% sobre o preço dos pratos.</p>
+                        <p><strong>Embalagens e Delivery (iFood/entregas):</strong> Aproximadamente 7% sobre o faturamento bruto.</p>
+                        <div class="mt-6 pt-4 border-t border-gray-700">
+                             <p class="text-lg text-white">🔹 Custo variável médio estimado:</p>
+                             <p class="text-2xl font-bold text-amber-400">R$ 15.000 a R$ 20.000/mês</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Receita Estimada Mensal -->
+                <section class="bg-gray-900/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-700 h-full">
+                    <h2 class="text-2xl md:text-3xl font-title text-amber-400 mb-6 flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        4. Receita Estimada
+                    </h2>
+                    <div class="space-y-4 text-gray-300">
+                        <p><strong>Capacidade:</strong> 80 clientes/dia útil</p>
+                        <p><strong>Ticket Médio:</strong> R$ 48,00</p>
+                        <p><strong>Dias de Funcionamento:</strong> 26 dias/mês</p>
+                        <div class="mt-6 pt-4 border-t border-gray-700">
+                             <p class="text-lg text-white">💰 Faturamento bruto estimado:</p>
+                             <p class="text-2xl font-bold text-amber-400">R$ 99.840/mês</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 5. Análise de Lucro e Rentabilidade -->
+            <section class="bg-gray-900/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-700">
+                <h2 class="text-2xl md:text-3xl font-title text-amber-400 mb-6 flex items-center gap-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    5. Análise de Lucro
+                </h2>
+                <div class="space-y-3 text-lg text-gray-200">
+                    <p class="flex justify-between"><span>Faturamento Bruto:</span> <span class="font-semibold text-green-400">R$ 99.840</span></p>
+                    <p class="flex justify-between"><span>(-) Custos Fixos:</span> <span class="font-semibold text-red-400">R$ 29.850</span></p>
+                    <p class="flex justify-between"><span>(-) Custos Variáveis (média):</span> <span class="font-semibold text-red-400">R$ 18.000</span></p>
+                    <hr class="border-gray-600 my-2">
+                    <p class="flex justify-between font-bold text-xl"><span>Lucro Operacional:</span> <span class="text-amber-400">R$ 52.000/mês</span></p>
+                    <p class="text-sm text-gray-400 text-right">Margem bruta de ~52%</p>
+                </div>
+                 <div class="mt-6 pt-4 border-t border-gray-700 text-center">
+                     <p class="text-lg text-white">🔹 Lucro líquido estimado (pós-impostos):</p>
+                     <p class="text-2xl font-bold text-green-400">R$ 35.000 a R$ 40.000/mês</p>
+                </div>
+            </section>
+            
+            <!-- Grid com 2 colunas para as seções finais -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- 6. Ponto de Equilíbrio -->
+                <section class="bg-gray-900/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-700 h-full">
+                    <h2 class="text-2xl md:text-3xl font-title text-amber-400 mb-6 flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>
+                        6. Ponto de Equilíbrio
+                    </h2>
+                    <div class="space-y-4 text-gray-300">
+                        <p class="text-sm">Cálculo: Custos Fixos / (1 – % dos custos variáveis)</p>
+                        <p class="font-mono bg-gray-800 p-3 rounded-md">= R$ 29.850 / (1 – 0,35)</p>
+                        <p class="font-mono bg-gray-800 p-3 rounded-md">= R$ 29.850 / 0,65 ≈ <strong class="text-amber-400">R$ 45.923</strong></p>
+                        <p class="mt-4">Ou seja, o restaurante precisa faturar cerca de <strong class="text-white">R$ 46.000/mês</strong> para não operar no prejuízo.</p>
+                    </div>
+                </section>
+
+                <!-- 7. Retorno do Investimento (Payback) -->
+                <section class="bg-gray-900/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-700 h-full">
+                    <h2 class="text-2xl md:text-3xl font-title text-amber-400 mb-6 flex items-center gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        7. Retorno do Investimento
+                    </h2>
+                    <div class="space-y-4 text-gray-300">
+                        <p>Com lucro líquido de <strong>R$ 35.000/mês</strong>:</p>
+                        <p class="font-mono bg-gray-800 p-3 rounded-md">R$ 233.000 / R$ 35.000 = ~6.65</p>
+                        <div class="mt-6 pt-4 border-t border-gray-700 text-center">
+                            <p class="text-lg text-white">➡️ Retorno estimado em:</p>
+                            <p class="text-3xl font-bold text-amber-400">7 a 8 meses</p>
+                            <p class="text-sm text-gray-400">após a abertura</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/svg+xml" href="favicon2.svg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra Mexicana - POPs</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 'Cinzel Decorative' & 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <!-- Estilos Personalizados -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+        .font-title {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        .animated-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bg-scroll 80s linear infinite;
+        }
+        @keyframes bg-scroll {
+            from { background-position: 0 0; }
+            to { background-position: -500px -500px; }
+        }
+        .content-card {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+        .accordion-header {
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: rgba(251, 191, 36, 0.1);
+        }
+        .info-block {
+            border-left: 2px solid #fbbf24;
+            padding-left: 1rem;
+            margin-top: 1.5rem;
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+
+<body class="animated-bg">
+
+    <!-- Header -->
+    <header class="py-10 text-center">
+        <h1 class="font-title text-4xl sm:text-5xl md:text-6xl text-amber-400">Tierra Mexicana</h1>
+        <p class="text-lg sm:text-xl text-gray-300 mt-2">Procedimentos Operacionais Padronizados (POPs)</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 sm:px-6 py-12">
+        <div class="content-card rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12" x-data="popsData">
+
+            <div class="text-center mb-10">
+                <h2 class="text-3xl sm:text-4xl font-semibold text-white">Garantia de Qualidade e Segurança</h2>
+                <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Nossos POPs estabelecem as diretrizes para cada operação crítica, assegurando a conformidade, segurança e excelência em nossos serviços.</p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- Estrutura Genérica para os POPs -->
+                <template x-for="pop in pops" :key="pop.id">
+                    <div class="bg-gray-800/50 rounded-lg">
+                        <button @click="open = (open === pop.id ? null : pop.id)" class="accordion-header w-full flex justify-between items-center p-5 text-left">
+                            <span class="text-xl font-semibold text-white" x-text="pop.titulo"></span>
+                            <svg :class="{'rotate-180': open === pop.id}" class="w-6 h-6 text-amber-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open === pop.id" x-collapse.duration.500ms class="p-5 border-t border-gray-700" x-cloak>
+                            <div class="space-y-6">
+                                <div class="info-block">
+                                    <h3 class="text-lg font-semibold text-amber-400">Objetivo</h3>
+                                    <p class="text-gray-300" x-text="pop.objetivo"></p>
+                                </div>
+                                <div class="info-block">
+                                    <h3 class="text-lg font-semibold text-amber-400">Frequência</h3>
+                                    <ul class="list-disc list-inside text-gray-300">
+                                        <template x-for="item in pop.frequencia" :key="item">
+                                            <li x-text="item"></li>
+                                        </template>
+                                    </ul>
+                                </div>
+                                <div class="info-block" x-show="pop.materiais.length > 0">
+                                    <h3 class="text-lg font-semibold text-amber-400">Materiais</h3>
+                                    <ul class="list-disc list-inside text-gray-300">
+                                        <template x-for="item in pop.materiais" :key="item">
+                                            <li x-text="item"></li>
+                                        </template>
+                                    </ul>
+                                </div>
+                                <div class="info-block">
+                                    <h3 class="text-lg font-semibold text-amber-400">Procedimento</h3>
+                                    <ol class="list-decimal list-inside text-gray-300 space-y-1">
+                                         <template x-for="item in pop.procedimento" :key="item">
+                                            <li x-text="item"></li>
+                                        </template>
+                                    </ol>
+                                </div>
+                                <div class="info-block">
+                                    <h3 class="text-lg font-semibold text-amber-400">Registros</h3>
+                                    <p class="text-gray-300" x-text="pop.registros"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-500">
+        <p>&copy; 2025 Tierra Mexicana - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('popsData', () => ({
+                open: 1,
+                pops: [
+                    { 
+                        id: 1,
+                        titulo: 'POP 01 – Higienização de Instalações, Equipamentos, Móveis e Utensílios',
+                        objetivo: 'Garantir a limpeza e sanitização eficaz de todas as superfícies e utensílios da UAN, evitando contaminações.',
+                        frequencia: ['Diária: superfícies, pias, bancadas, pisos', 'Semanal: paredes, prateleiras, refrigeradores', 'Imediata: após cada uso dos equipamentos'],
+                        materiais: ['Detergente neutro', 'Água potável', 'Álcool 70%', 'Desinfetante clorado (200 ppm)', 'Panos e baldes codificados'],
+                        procedimento: ['Remover resíduos com água.', 'Lavar com detergente e enxaguar.', 'Aplicar sanitizante (álcool 70% ou hipoclorito).', 'Deixar agir por 10 minutos.', 'Secar ao ar ou com papel descartável.'],
+                        registros: 'Planilha de Limpeza com data, hora, setor e assinatura do responsável.'
+                    },
+                    { 
+                        id: 2,
+                        titulo: 'POP 02 – Controle da Potabilidade da Água',
+                        objetivo: 'Assegurar que a água utilizada seja potável e própria para consumo e manipulação de alimentos.',
+                        frequencia: ['Análise microbiológica e físico-química: Semestral', 'Limpeza da caixa d’água: Semestral'],
+                        materiais: [],
+                        procedimento: ['Esvaziar e escovar as superfícies internas da caixa d’água.', 'Lavar com solução clorada (200 ppm).', 'Enxaguar e encher novamente.', 'Registrar data e responsável.'],
+                        registros: 'Laudos laboratoriais, ficha de limpeza da caixa d’água, planilha de controle.'
+                    },
+                    { 
+                        id: 3,
+                        titulo: 'POP 03 – Higienização de Hortifrutis',
+                        objetivo: 'Eliminar sujidades e microrganismos de frutas, legumes e verduras.',
+                        frequencia: ['Diariamente, antes do preparo.'],
+                        materiais: ['Água potável', 'Hipoclorito de sódio (2–2,5%)', 'Recipientes sanitizados'],
+                        procedimento: ['Lavar em água corrente.', 'Submergir em solução clorada (1 colher sopa para 1L de água) por 15 minutos.', 'Enxaguar bem.', 'Escorrer naturalmente.'],
+                        registros: 'Ficha de controle de sanitização de hortifruti.'
+                    },
+                    { 
+                        id: 4,
+                        titulo: 'POP 04 – Higiene e Saúde dos Manipuladores',
+                        objetivo: 'Manter condições higiênicas e de saúde dos funcionários da UAN.',
+                        frequencia: ['Diária (hábitos)', 'Semestral (exames médicos)'],
+                        materiais: [],
+                        procedimento: ['Usar uniforme limpo e exclusivo.', 'Manter unhas curtas e sem esmalte.', 'Proibir o uso de adornos.', 'Lavar as mãos frequentemente.', 'Proibir comer, fumar ou usar celular nas áreas de preparo.', 'Afastar funcionários em caso de sintomas de doenças infectocontagiosas.'],
+                        registros: 'Ficha de acompanhamento de saúde e treinamento, ASO (Atestado de Saúde Ocupacional).'
+                    },
+                    { 
+                        id: 5,
+                        titulo: 'POP 05 – Controle Integrado de Pragas Urbanas',
+                        objetivo: 'Prevenir e controlar infestações de pragas (baratas, roedores, moscas etc.).',
+                        frequencia: ['Monitoramento: semanal', 'Dedetização com empresa especializada: trimestral'],
+                        materiais: [],
+                        procedimento: ['Manter telas nas janelas e ralos tampados.', 'Não deixar restos de alimentos expostos.', 'Usar lixeiras com tampa e pedal.', 'Contratar controle químico com empresa registrada.'],
+                        registros: 'Certificado de dedetização, fichas de inspeção interna.'
+                    },
+                    { 
+                        id: 6,
+                        titulo: 'POP 06 – Manejo de Resíduos',
+                        objetivo: 'Assegurar o correto acondicionamento, separação e descarte dos resíduos da UAN.',
+                        frequencia: ['Diária (remoção e lavagem das lixeiras)'],
+                        materiais: [],
+                        procedimento: ['Separar resíduos orgânicos e recicláveis.', 'Usar sacos plásticos resistentes.', 'Lavar e desinfetar as lixeiras ao fim do dia.', 'Descartar em local autorizado pela coleta pública.'],
+                        registros: 'Checklists de manejo de resíduos.'
+                    },
+                    { 
+                        id: 7,
+                        titulo: 'POP 07 – Recebimento de Matérias-Primas',
+                        objetivo: 'Garantir que os insumos recebidos estejam dentro dos padrões sanitários e de qualidade.',
+                        frequencia: ['Toda entrega de mercadorias.'],
+                        materiais: [],
+                        procedimento: ['Conferir nota fiscal x pedido.', 'Avaliar embalagem, validade e rotulagem.', 'Verificar temperatura correta (refrigerados e congelados).', 'Inspecionar higiene do veículo de transporte.', 'Avaliar produto visualmente e sensorialmente.', 'Registrar no formulário de recebimento.'],
+                        registros: 'Ficha de recebimento de mercadorias.'
+                    },
+                    { 
+                        id: 8,
+                        titulo: 'POP 08 – Transporte de Alimentos Preparados',
+                        objetivo: 'Assegurar que alimentos transportados (delivery ou catering) mantenham qualidade e segurança.',
+                        frequencia: ['Em todo transporte de alimentos prontos.'],
+                        materiais: [],
+                        procedimento: ['Usar embalagens seguras, limpas e fechadas.', 'Manter alimentos quentes acima de 60°C e frios abaixo de 5°C.', 'Utilizar caixas térmicas higienizadas.', 'Reduzir ao máximo o tempo entre preparo e entrega (ideal: até 2 horas).'],
+                        registros: 'Checklist de transporte, ficha de controle de temperatura.'
+                    }
+                ]
+            }));
+        });
+    </script>
+</body>
+</html>

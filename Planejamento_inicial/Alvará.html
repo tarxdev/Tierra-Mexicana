@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/svg+xml" href="favicon4.svg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra Mexicana - Alvará de Funcionamento</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 'Cinzel Decorative' & 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Estilos Personalizados -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e5e7eb;
+            overflow-x: hidden; /* Previne scroll horizontal */
+        }
+        .font-title {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        .animated-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bg-scroll 80s linear infinite;
+        }
+        @keyframes bg-scroll {
+            from { background-position: 0 0; }
+            to { background-position: -500px -500px; }
+        }
+        .content-card {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+        .document-mockup {
+            border: 2px solid #fbbf24;
+            background: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<div class="container mx-auto px-4 mb-6">
+    <a href="planejamento.html"
+       class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-400/10 border border-amber-400 text-amber-300 font-semibold shadow hover:bg-amber-400/30 hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Voltar ao Planejamento
+    </a>
+</div>
+
+<body class="animated-bg">
+
+    <!-- Header -->
+    <header class="py-10 text-center">
+        <h1 class="font-title text-4xl sm:text-5xl md:text-6xl text-amber-400">Tierra Mexicana</h1>
+        <p class="text-lg sm:text-xl text-gray-300 mt-2">Alvará de Funcionamento</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 sm:px-6 py-12">
+        <div class="content-card rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12">
+
+                        <section class="mb-12">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <!-- Card Alvará de Funcionamento (não precisa ser link aqui, pois já está na página) -->
+                    <div class="bg-gray-800/50 p-6 rounded-lg text-center shadow hover:scale-105 transition block w-full md:w-1/2">
+                        <svg class="w-20 h-20 text-amber-400 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068M15.75 21a9 9 0 1 1-5.754-16.086M21 12a9 9 0 1 0-9 9" />
+                        </svg>
+                        <h2 class="text-3xl font-semibold text-white mt-4">Alvará de Funcionamento</h2>
+                        <p class="text-gray-400">A permissão para operar</p>
+                    </div>
+                    <div class="border-t-2 md:border-t-0 md:border-l-2 border-amber-400/30 pt-6 md:pt-0 md:pl-10 w-full md:w-1/2">
+                        <p class="text-lg text-gray-300">O Alvará de Funcionamento é a licença concedida pela prefeitura que autoriza o Tierra Mexicana a exercer as suas atividades no local especificado. Este documento é a prova de que cumprimos todas as normas e exigências municipais para operar de forma legal e segura.</p>
+                        <p class="text-gray-400 mt-4">Ele atesta que o nosso estabelecimento é compatível com a legislação de uso e ocupação do solo, e que respeita as condições de segurança, higiene e acessibilidade necessárias para receber os nossos clientes e colaboradores.</p>
+                    </div>
+                </div>
+            </section>
+                <hr class="border-gray-700 my-12">
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Detalhes do Alvará -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-white mb-6">Pontos-Chave Garantidos pelo Alvará:</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-1 font-bold">&#10003;</span>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-white">Conformidade do Imóvel</h4>
+                                    <p class="text-gray-400">Garante que a estrutura do casarão histórico é adequada para a atividade de restaurante.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-1 font-bold">&#10003;</span>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-white">Segurança Estrutural</h4>
+                                    <p class="text-gray-400">Assegura que as instalações elétricas, hidráulicas e de gás estão de acordo com as normas técnicas.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-1 font-bold">&#10003;</span>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-white">Horário de Funcionamento</h4>
+                                    <p class="text-gray-400">Define e autoriza o nosso horário de funcionamento, em conformidade com as leis de ruído e vizinhança.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-1 font-bold">&#10003;</span>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-white">Acessibilidade</h4>
+                                    <p class="text-gray-400">Confirma que o restaurante possui as adaptações necessárias para Pessoas com Deficiência (PCD).</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Imagem do Alvará -->
+                    <div>
+                        <div class="document-mockup rounded-lg p-4">
+                            <img src="https://i.ibb.co/vxbbyFwq/Documento-Termo-de-Autoriza-o-de-Uso-de-Imagem.jpg" 
+                                 class="w-full h-auto rounded-md object-cover">
+                        </div>
+                        <p class="text-sm text-gray-400 mt-4 text-center">
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-500">
+        <p>&copy; 2025 Tierra Mexicana - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

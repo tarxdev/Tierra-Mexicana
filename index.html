@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/png" href="favicon.png"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra Mexicana - Gestão e Sabor</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 'Cinzel Decorative' & 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e5e7eb;
+            overflow-x: hidden; /* Previne scroll horizontal */
+        }
+        .font-title {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        
+        /* Efeito de transição de página */
+        .page-section {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            min-height: 85vh; /* Garante que a página ocupe a tela */
+        }
+        .page-section[x-cloak] {
+            opacity: 0;
+            transform: translateY(20px);
+            display: none;
+        }
+
+        /* Fundo animado com padrão SVG */
+        .animated-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bg-scroll 80s linear infinite;
+        }
+        @keyframes bg-scroll {
+            from { background-position: 0 0; }
+            to { background-position: -500px -500px; }
+        }
+
+        /* Efeito de Borda Neon nos Cards */
+        .glowing-card {
+            position: relative;
+            background: #1a1a1a;
+            transition: transform 0.3s ease;
+        }
+        .glowing-card:hover {
+            transform: translateY(-8px);
+        }
+        .glowing-card::before {
+            content: '';
+            position: absolute;
+            left: -2px; top: -2px;
+            right: -2px; bottom: -2px;
+            background: conic-gradient(from var(--angle), #fbbf24, #ec4899, #22d3ee, #fbbf24);
+            z-index: -1;
+            border-radius: 1rem; /* 16px */
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: spin 5s linear infinite;
+        }
+        .glowing-card:hover::before {
+            opacity: 1;
+        }
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+        @keyframes spin {
+            from { --angle: 0deg; }
+            to { --angle: 360deg; }
+        }
+    </style>
+</head>
+
+<body x-data="{ activePage: 'inicio' }">
+
+    <header class="bg-black/70 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#" @click.prevent="activePage = 'inicio'" class="text-2xl sm:text-3xl font-title text-amber-400 cursor-pointer">Tierra Mexicana</a>
+            <p class="hidden md:block text-gray-400">Projeto de Gestão em UAN</p>
+
+            <a href="Tierra Mexicana.pdf" 
+   download="Projeto_Tierra_Mexicana.pdf"
+   class="
+     group
+     flex items-center justify-center 
+     gap-3 
+     px-5 py-2 
+     bg-amber-500 
+     text-black 
+     font-bold 
+     rounded-lg 
+     shadow-lg 
+     hover:bg-amber-400 
+     hover:shadow-amber-500/40
+     transform hover:-translate-y-0.5
+     transition-all duration-300 ease-in-out
+   "
+>
+  <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z" />
+      <path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
+  </svg>
+  
+  <span class="text-sm">Baixar Todos Documentos</span>
+</a>
+        </div>
+    </header>
+
+    <main class="w-full">
+        <!-- ########################################## -->
+        <!-- ##      PÁGINA INICIAL DETALHADA        ## -->
+        <!-- ########################################## -->
+        <div x-show="activePage === 'inicio'" class="page-section" x-cloak>
+            <!-- Hero Section com padding em vez de altura fixa -->
+            <section class="relative text-center bg-cover bg-center py-20 sm:py-24 md:py-32" style="background-image: url('https://images.unsplash.com/photo-1599834802488-51a81115b0ce?q=80&w=2940&auto=format&fit=crop');">
+                <div class="absolute inset-0 bg-black/60"></div>
+                <div class="relative z-10 px-4">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-title text-amber-400 drop-shadow-lg">Bem-Vindo</h1>
+                    <p class="text-lg md:text-xl lg:text-2xl font-light text-gray-200 mt-2 max-w-2xl mx-auto">Explore os pilares do nosso restaurante fictício.</p>
+                </div>
+            </section>
+            
+            <!-- Seção de Navegação por Blocos -->
+            <section class="animated-bg py-16 sm:py-20">
+                <div class="container mx-auto px-4 sm:px-6">
+                    <!-- Grid responsivo: 1 coluna no mobile, 2 no tablet, 3 no desktop -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                        
+                        <!-- Bloco 1: Cardápio -->
+                         <a href="Cardápio/cardapio.html" class="glowing-card rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center">
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6-2.292m0 0V21M12 6.042A8.967 8.967 0 0 1 18 3.75m-12 0A8.966 8.966 0 0 1 12 6.042" />
+                            </svg>
+                            <h3 class="text-xl font-bold text-white mb-2">Cardápio</h3>
+                            <p class="text-gray-400 text-sm">Nossos pratos, sabores e valores.</p>
+                        </a>
+                        
+                        <!-- Bloco 2: POPs -->
+                        <a href="POPs/pops.html" class="glowing-card rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center">
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                            <h3 class="text-xl font-bold text-white mb-2">POPs</h3>
+                            <p class="text-gray-400 text-sm">Procedimentos Operacionais Padronizados.</p>
+                        </a>
+
+                        <!-- Bloco 3: Fichas Técnicas -->
+                        <a href="Fichas_tecnicas/fichas.html" class="glowing-card rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center">
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9" /></svg>
+                            <h3 class="text-xl font-bold text-white mb-2">Fichas Técnicas</h3>
+                            <p class="text-gray-400 text-sm">Rendimento, preços e padronização.</p>
+                        </a>
+                        
+                        <!-- Bloco 4: Planejamento Inicial -->
+                        <a href="Planejamento_inicial/planejamento.html" class="glowing-card rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center">
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                            </svg>
+                            <h3 class="text-xl font-bold text-white mb-2">Planejamento Inicial</h3>
+                            <p class="text-gray-400 text-sm">Documentação, estrutura e localização.</p>
+                        </a>
+
+                        <!-- Bloco 5: Layout e Higienização -->
+                        <a href="Layout_higienizaçao/layout.html" class="glowing-card rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center">
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" /></svg>
+                            <h3 class="text-xl font-bold text-white mb-2">Layout e Higienização</h3>
+                            <p class="text-gray-400 text-sm">Planta da UAN e planos de limpeza.</p>
+                        </a>
+
+                        <!-- Bloco 6: Estoque e Boas Práticas -->
+                        <a href="Estoques_e_boas_praticas/estoques.html" class="glowing-card rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center">
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" /></svg>
+                            <h3 class="text-xl font-bold text-white mb-2">Estoque e Boas Práticas</h3>
+                            <p class="text-gray-400 text-sm">Sistema PEPS e controle de insumos.</p>
+                        </a>
+
+                         <!-- Bloco 7: Equipe e treinamento -->
+                         <a href="Equipe_e_treinamento/equipe.html" class="glowing-card rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center">
+                         <svg class="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.5-2.226A3 3 0 0 1 18 15.75a3 3 0 0 1-2.25 2.72m-7.5-2.226a3 3 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72M12 18.75a3 3 0 0 1-2.25-2.72m3.741-.479a3 3 0 0 1-4.682-2.72m4.682 2.72a3 3 0 0 0 3.741-.479m-12 .479a3 3 0 0 1-4.682-2.72M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                            <h3 class="text-xl font-bold text-white mb-2">Equipe e Treinamento</h3>
+                            <p class="text-gray-400 text-sm">Nossa equipe e seu desenvolvimento.</p>
+                        </a>
+
+                        <!-- Bloco 8: Planejamento Financeiro -->
+                        <a href="Financeiro/financeiro.html" class="glowing-card rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center">
+                             <svg class="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-.375m1.5-3.75v.375c0 .621-.504 1.125-1.125 1.125h-1.5a1.125 1.125 0 0 1-1.125-1.125v-.375m3.75 18.75v-1.5a2.25 2.25 0 0 0-2.25-2.25h-15a2.25 2.25 0 0 0-2.25 2.25v1.5m19.5 0-2.25-2.25m0 0a2.25 2.25 0 0 0-3.182 0l-2.25 2.25m2.25-2.25 2.25 2.25" /></svg>
+                             <h3 class="text-xl font-bold text-white mb-2">Planejamento Financeiro</h3>
+                             <p class="text-gray-400 text-sm">Controle, gestão e viabilidade.</p>
+                        </a>
+
+                        <a href="Visual/visual.html" class="glowing-card rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center">
+                             <svg class="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.375 3.375 0 0 1 3.375 17.625a3.375 3.375 0 0 1 3.375-3.375h1.5a3.375 3.375 0 0 1 3.375 3.375v1.5a3.375 3.375 0 0 1-3.375 3.375h-1.5Zm9.152-16.652a3.375 3.375 0 0 1 0 4.773L12.9 11.25l4.773-4.773a3.375 3.375 0 0 1 0-4.774Z" /></svg>
+                            <h3 class="text-xl font-bold text-white mb-2">Identidade Visual</h3>
+                            <p class="text-gray-400 text-sm">A alma e as cores da marca.</p>
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ########################################## -->
+        <!-- ##      SEÇÕES / PÁGINAS INTERNAS       ## -->
+        <!-- ########################################## -->
+        <template x-for="page in ['cardapio', 'pops', 'fichas', 'planejamento', 'layout_higiene', 'estoque', 'equipe', 'financeiro', 'identidade']">
+            <section x-show="activePage === page" class="page-section container mx-auto p-4 sm:p-6 md:p-10 relative" x-cloak>
+                <div class="bg-gray-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-lg shadow-2xl">
+                    <h2 class="text-4xl md:text-5xl font-title text-center text-amber-400 mb-8" x-text="page.replace(/_/g, ' e ').replace(/\b\w/g, l => l.toUpperCase())"></h2>
+                    <p class="text-lg text-gray-300">Insira aqui o conteúdo detalhado para esta seção.</p>
+                    <p class="mt-4 text-gray-400">Você pode adicionar tabelas, listas, imagens e todo o material do seu trabalho acadêmico.</p>
+                </div>
+                 <!-- Botão de Voltar -->
+                <button @click="activePage = 'inicio'" class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 bg-amber-500 text-black rounded-full p-3 sm:p-4 shadow-lg hover:bg-amber-400 transition-all duration-300 z-50">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" /></svg>
+                </button>
+            </section>
+        </template>
+    </main>
+</body>
+</html>

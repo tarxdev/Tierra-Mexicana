@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/svg+xml" href="favicon4.svg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra Mexicana - Planejamento Inicial</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 'Cinzel Decorative' & 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Estilos Personalizados -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e5e7eb;
+            overflow-x: hidden; /* Previne scroll horizontal */
+        }
+        .font-title {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        .animated-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bg-scroll 80s linear infinite;
+        }
+        @keyframes bg-scroll {
+            from { background-position: 0 0; }
+            to { background-position: -500px -500px; }
+        }
+        .content-card {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+    </style>
+</head>
+
+<body class="animated-bg">
+
+    <!-- Header -->
+    <header class="py-10 text-center">
+        <h1 class="font-title text-4xl sm:text-5xl md:text-6xl text-amber-400">Tierra Mexicana</h1>
+        <p class="text-lg sm:text-xl text-gray-300 mt-2">Planejamento Inicial Detalhado</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 sm:px-6 py-12">
+        <div class="content-card rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12 space-y-16">
+
+            <!-- Seção de Documentação Legal -->
+            <section>
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl sm:text-4xl font-semibold text-white">Fundação e Legalidade</h2>
+                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto">A base sólida do nosso negócio, garantindo operação segura e em total conformidade com a legislação.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Item de Documento -->
+                     <a href="registros.html" class="bg-gray-800/50 p-6 rounded-lg text-center hover:scale-105 transition block">
+                        <svg class="w-10 h-10 text-amber-400 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+                        <h3 class="font-semibold text-lg text-white">Registos Principais</h3>
+                        <p class="text-sm text-gray-400 mt-1">CNPJ, Contrato Social e Inscrições (Estadual/Municipal).</p>
+                     </a>
+                    <!-- Item de Documento -->
+                    <a href="Alvará.html" class="bg-gray-800/50 p-6 rounded-lg text-center hover:scale-105 transition block">
+                        <svg class="w-10 h-10 text-amber-400 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <h3 class="font-semibold text-lg text-white">Alvará de Funcionamento</h3>
+                        <p class="text-sm text-gray-400 mt-1">Licença emitida pela prefeitura para operação comercial.</p>
+                    </a>
+                    <!-- Item de Documento -->
+                     <a href="licenças.html" class="bg-gray-800/50 p-6 rounded-lg text-center hover:scale-105 transition block">
+                        <svg class="w-10 h-10 text-amber-400 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
+                        <h3 class="font-semibold text-lg text-white">Licenças de segurança</h3>
+                        <p class="text-sm text-gray-400 mt-1">AVCB (Bombeiros) e CMVS (Vigilância Sanitária)</p>
+                     </a>    
+                </div>
+            <!-- Seção de Localização e Estrutura -->
+            <section>
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl sm:text-4xl font-semibold text-white">Localização e Estrutura</h2>
+                    <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Onde a magia acontece. Um espaço pensado para conforto, eficiência e imersão cultural.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+                    <!-- Coluna de Informações -->
+                    <div class="lg:col-span-3">
+                        <h3 class="text-2xl font-semibold text-amber-400 mb-4">Ponto Estratégico: Recife Antigo</h3>
+                        <p class="text-gray-300 mb-6">A escolha da <strong>Rua da Moeda</strong> não foi por acaso. Este local icónico do Recife Antigo oferece a combinação perfeita de visibilidade, fluxo de público qualificado e uma atmosfera cultural que complementa a nossa proposta gastronómica.</p>
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-semibold text-white">Estrutura do Casarão (280m²)</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li><strong>Salão Principal e Mezanino:</strong> Ambiente climatizado com capacidade total para 80 clientes, unindo o charme rústico com o conforto moderno.</li>
+                                <li><strong>Cozinha Industrial:</strong> 60m² com layout de fluxo contínuo, otimizando a segurança alimentar e a agilidade da produção.</li>
+                                <li><strong>Áreas de Apoio:</strong> Estoques (seco, refrigerado, congelado), vestiários para funcionários e DML (Depósito de Material de Limpeza).</li>
+                                <li><strong>Acessibilidade:</strong> Rampa de acesso e sanitários totalmente adaptados para Pessoas com Deficiência (PCD).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Coluna do Mapa -->
+                    <div class="lg:col-span-2 flex flex-col items-center justify-center">
+                        <div class="w-full h-64 lg:h-full rounded-lg bg-gray-800/50 flex items-center justify-center text-gray-400 border border-amber-400/20 shadow-lg">
+                            <!-- Placeholder do Mapa -->
+                             <iframe class="w-full h-full rounded-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.366887569111!2d-34.87325268522006!3d-8.0640539941935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab18a448721111%3A0x89254f6a5b1a64f0!2sR.+da+Moeda+-+Recife%2C+PE!5e0!3m2!1spt-BR!2sbr!4v1624817454789!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-2 text-center">Rua da Moeda, Recife, PE</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-500">
+        <p>&copy; 2025 Tierra Mexicana - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/svg+xml" href="favicon4.svg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra Mexicana - Registos Principais</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 'Cinzel Decorative' & 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Estilos Personalizados -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e5e7eb;
+            overflow-x: hidden; /* Previne scroll horizontal */
+        }
+        .font-title {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        .animated-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bg-scroll 80s linear infinite;
+        }
+        @keyframes bg-scroll {
+            from { background-position: 0 0; }
+            to { background-position: -500px -500px; }
+        }
+        .content-card {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+        .info-block {
+            border-left: 3px solid #fbbf24;
+            transition: background-color 0.3s ease;
+        }
+        .info-block:hover {
+            background-color: rgba(251, 191, 36, 0.05);
+        }
+    </style>
+</head>
+   <div class="container mx-auto px-4 mb-6">
+    <a href="planejamento.html"
+       class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-400/10 border border-amber-400 text-amber-300 font-semibold shadow hover:bg-amber-400/30 hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Voltar ao Planejamento
+    </a>
+</div>
+
+<body class="animated-bg">
+
+    <!-- Header -->
+    <header class="py-10 text-center">
+        <h1 class="font-title text-4xl sm:text-5xl md:text-6xl text-amber-400">Tierra Mexicana</h1>
+        <p class="text-lg sm:text-xl text-gray-300 mt-2">Registos Principais da Empresa</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 sm:px-6 py-12">
+        <div class="content-card rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12 space-y-12">
+
+            <!-- CNPJ -->
+            <section class="info-block pl-6 md:pl-8 py-4">
+                <div class="flex items-center gap-4 mb-3">
+                    <svg class="w-8 h-8 text-amber-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9H9m6 3H9m12-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                    <h2 class="text-3xl font-semibold text-white">CNPJ</h2>
+                </div>
+                <p class="text-gray-300 mb-2">O Cadastro Nacional da Pessoa Jurídica é a identidade da nossa empresa perante a Receita Federal. Ele formaliza a existência do Tierra Mexicana e é indispensável para todas as operações fiscais e comerciais.</p>
+                <p class="font-mono text-lg text-amber-400 bg-gray-900/50 inline-block px-4 py-2 rounded-md">CNPJ: 12.345.678/0001-95</p>
+            </section>
+
+            <!-- Contrato Social -->
+            <section class="info-block pl-6 md:pl-8 py-4">
+                <div class="flex items-center gap-4 mb-3">
+                    <svg class="w-8 h-8 text-amber-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m-1.5 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+                    <h2 class="text-3xl font-semibold text-white">Contrato Social</h2>
+                </div>
+                <p class="text-gray-300">Este é o documento de fundação do restaurante, a nossa "certidão de nascimento". Arquivado na Junta Comercial, ele define os pilares essenciais do nosso negócio:</p>
+                <ul class="list-disc list-inside mt-4 text-gray-300 space-y-2">
+                    <li><strong>Sócios e Responsabilidades:</strong> Tarciso Ferreira Da Silva Neto & Maria Yasmin Sophia Santos.</li>
+                    <li><strong>Capital Social:</strong> R$ 50.000,00</li>
+                    <li><strong>Objeto Social:</strong> Exploração de atividades de restaurante, lanchonete e similares, com preparo e comercialização de alimentos e bebidas para consumo no local ou por entrega, incluindo pratos típicos da culinária mexicana, serviços de catering, eventos gastronômicos e atividades afins do ramo alimentício.</li>
+                    <li><strong>Regras de Operação:</strong> ecebimento de mercadorias, estoque, pré-preparo, cocção, montagem dos pratos, distribuição, lavagem de utensílios e louças, equipe, limpeza e higienização da UAN, segurança, controle de documentos.</li>
+                </ul>
+            </section>
+
+            <!-- Inscrições -->
+            <section class="info-block pl-6 md:pl-8 py-4">
+                 <div class="flex items-center gap-4 mb-3">
+                    <svg class="w-8 h-8 text-amber-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M9 12h6.375m-6.375 5.25h6.375M5.25 6h.008v.008H5.25V6Zm.75 0h.008v.008H6V6Zm.75 0h.008v.008H6.75V6Zm.75 0h.008v.008H7.5V6Zm.75 0h.008v.008H8.25V6Zm5.25 0h.008v.008H13.5V6Zm.75 0h.008v.008H14.25V6Zm.75 0h.008v.008H15V6Zm.75 0h.008v.008H15.75V6Zm.75 0h.008v.008H16.5V6Zm-11.25 5.25h.008v.008H5.25v-.008Zm.75 0h.008v.008H6v-.008Zm.75 0h.008v.008H6.75v-.008Zm.75 0h.008v.008H7.5v-.008Zm.75 0h.008v.008H8.25v-.008Zm5.25 0h.008v.008H13.5v-.008Zm.75 0h.008v.008H14.25v-.008Zm.75 0h.008v.008H15v-.008Zm.75 0h.008v.008H15.75v-.008Zm.75 0h.008v.008H16.5v-.008Zm-11.25 5.25h.008v.008H5.25v-.008Zm.75 0h.008v.008H6v-.008Zm.75 0h.008v.008H6.75v-.008Zm.75 0h.008v.008H7.5v-.008Zm.75 0h.008v.008H8.25v-.008Zm5.25 0h.008v.008H13.5v-.008Zm.75 0h.008v.008H14.25v-.008Zm.75 0h.008v.008H15v-.008Zm.75 0h.008v.008H15.75v-.008Zm.75 0h.008v.008H16.5v-.008Z" /></svg>
+                    <h2 class="text-3xl font-semibold text-white">Inscrições Fiscais</h2>
+                </div>
+                <p class="text-gray-300 mb-6">Para operar legalmente, estamos registados nas esferas estadual e municipal, o que nos permite recolher os impostos corretamente.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-amber-400">Inscrição Estadual</h3>
+                        <p class="text-gray-300 mt-1">Habilita a empresa a recolher o ICMS (Imposto sobre Circulação de Mercadorias e Serviços), obrigatório pela venda de bebidas e produtos industrializados.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-amber-400">Inscrição Municipal</h3>
+                        <p class="text-gray-300 mt-1">Necessária para o recolhimento do ISS (Imposto Sobre Serviços), que incide sobre o nosso serviço principal: o preparo e fornecimento de alimentos.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-500">
+        <p>&copy; 2024 Tierra Mexicana - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

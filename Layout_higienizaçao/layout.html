@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/svg+xml" href="favicon5.svg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra Mexicana - Planta da UAN e Limpeza</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 'Cinzel Decorative' & 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Alpine.js is not strictly necessary for this version, but kept for potential future use -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e5e7eb;
+            overflow-x: hidden; /* Previne scroll horizontal */
+        }
+        .font-title {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        
+        /* Fundo animado com padrão SVG */
+        .animated-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bg-scroll 80s linear infinite;
+        }
+        @keyframes bg-scroll {
+            from { background-position: 0 0; }
+            to { background-position: -500px -500px; }
+        }
+
+        /* Estilo para tabelas */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #374151; /* gray-700 */
+        }
+        thead th {
+            background-color: rgba(17, 24, 39, 0.5); /* gray-900/50 */
+            font-weight: 600;
+            text-align: left;
+        }
+        tbody tr:hover {
+            background-color: rgba(55, 65, 81, 0.4); /* gray-700/40 */
+        }
+    </style>
+</head>
+
+<body class="animated-bg">
+
+    <main class="w-full min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-10">
+        <!-- Container principal do conteúdo -->
+        <div class="bg-gray-800/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl max-w-5xl w-full">
+            <h1 class="text-4xl md:text-5xl font-title text-center text-amber-400 mb-10">Planta da UAN e Planos de Limpeza</h1>
+
+            <!-- Seção da Planta da UAN -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-amber-400 pl-4">🧭 Planta da UAN – Tierra Mexicana</h2>
+                
+                <!-- Imagem da Planta (Estática) -->
+                <div class="mb-8 p-4 bg-black/20 rounded-lg">
+                    <!--
+                      INSTRUÇÃO:
+                      Para adicionar sua imagem, substitua o link abaixo no atributo 'src'
+                      pelo URL da sua imagem.
+                    -->
+                    <img 
+                        src="https://i.ibb.co/mVc5MrT8/Chat-GPT-Image-1-de-jul-de-2025-21-33-38.png"
+                        alt="Planta baixa da Unidade de Alimentação e Nutrição (UAN)" 
+                        class="rounded-lg w-full h-auto object-contain"
+                        style="max-height: 500px;"
+                    >
+                </div>
+
+                <!-- Tabela de Distribuição -->
+                <div class="p-4 bg-black/20 rounded-lg overflow-x-auto">
+                    <p class="text-gray-300 mb-4">Área total da UAN (produção e apoio): <strong>60 m²</strong></p>
+                    <table>
+                        <thead>
+                            <tr><th>Setor</th><th>Medidas aproximadas</th><th>Observações</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Recepção de mercadorias</td><td>3 m²</td><td>Próximo à entrada técnica, com rampa</td></tr>
+                            <tr><td>Armazenamento seco (estoque)</td><td>6 m²</td><td>Prateleiras metálicas</td></tr>
+                            <tr><td>Câmara fria (refrigerado)</td><td>3 m²</td><td>0ºC a 5ºC</td></tr>
+                            <tr><td>Freezer (congelado)</td><td>2 m²</td><td>Até –18ºC</td></tr>
+                            <tr><td>Pré-preparo de hortifrutis</td><td>6 m²</td><td>Bancadas, lavatório exclusivo</td></tr>
+                            <tr><td>Pré-preparo de carnes</td><td>6 m²</td><td>Bancada vermelha, pia exclusiva</td></tr>
+                            <tr><td>Cocção (fogões/fornos)</td><td>10 m²</td><td>Coifa, área quente</td></tr>
+                            <tr><td>Montagem de pratos</td><td>4 m²</td><td>Bancada final, próximo à saída</td></tr>
+                            <tr><td>Lavagem de utensílios</td><td>5 m²</td><td>3 cubas, escorredores</td></tr>
+                            <tr><td>DML (limpeza)</td><td>3 m²</td><td>Pia exclusiva, produtos rotulados</td></tr>
+                            <tr><td>Vestiário de funcionários</td><td>4 m²</td><td>Armários, banco e lavatório</td></tr>
+                            <tr><td>Circulação / corredores</td><td>8 m²</td><td>Fluxo contínuo sem cruzamentos</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Seção dos Planos de Limpeza -->
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-amber-400 pl-4">🧼 Planos de Limpeza – Setorizados e Frequência</h2>
+                <div class="space-y-8">
+                    <!-- Plano Diário -->
+                    <div class="p-4 bg-black/20 rounded-lg overflow-x-auto">
+                        <h3 class="text-xl font-semibold text-amber-400 mb-3">✅ Plano Diário (uso contínuo)</h3>
+                        <table>
+                            <thead><tr><th>Área</th><th>Frequência</th><th>Produto usado</th><th>Responsável</th></tr></thead>
+                            <tbody>
+                                <tr><td>Bancadas de preparo</td><td>Após cada uso</td><td>Detergente + álcool 70%</td><td>Cozinheiro/Auxiliar</td></tr>
+                                <tr><td>Pias e torneiras</td><td>2x ao dia</td><td>Detergente neutro</td><td>Auxiliar de limpeza</td></tr>
+                                <tr><td>Piso da cozinha</td><td>Ao fim do turno</td><td>Desengordurante + cloro</td><td>Auxiliar de limpeza</td></tr>
+                                <tr><td>Utensílios e panelas</td><td>Imediato ao uso</td><td>Detergente + água quente</td><td>Lavador</td></tr>
+                                <tr><td>Lixeiras</td><td>Troca diária</td><td>Detergente + cloro</td><td>Auxiliar de limpeza</td></tr>
+                                <tr><td>Câmaras frias (externo)</td><td>1x ao dia</td><td>Álcool 70%</td><td>Estoquista</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Plano Semanal -->
+                    <div class="p-4 bg-black/20 rounded-lg overflow-x-auto">
+                        <h3 class="text-xl font-semibold text-amber-400 mb-3">🧽 Plano Semanal</h3>
+                        <table>
+                            <thead><tr><th>Área</th><th>Produto</th><th>Observações</th></tr></thead>
+                            <tbody>
+                                <tr><td>Prateleiras do estoque</td><td>Álcool 70%</td><td>Retirar produtos antes</td></tr>
+                                <tr><td>Paredes da cozinha</td><td>Detergente/cloro</td><td>Foco em áreas com respingos</td></tr>
+                                <tr><td>Câmara fria (interna)</td><td>Água + cloro</td><td>Com equipamento desligado</td></tr>
+                                <tr><td>Freezers</td><td>Água + desinfetante</td><td>Descongelar se necessário</td></tr>
+                                <tr><td>Equipamentos (fogão, coifa)</td><td>Desengordurante</td><td>Inclui desmontagem parcial</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Plano Semestral -->
+                    <div class="p-4 bg-black/20 rounded-lg overflow-x-auto">
+                        <h3 class="text-xl font-semibold text-amber-400 mb-3">🧼 Plano Semestral (mínimo)</h3>
+                        <table>
+                            <thead><tr><th>Local</th><th>Tarefa</th></tr></thead>
+                            <tbody>
+                                <tr><td>Caixa d’água</td><td>Lavagem e desinfecção</td></tr>
+                                <tr><td>Vestiário</td><td>Lavagem total com desinfetante</td></tr>
+                                <tr><td>Estoque seco e DML</td><td>Revisão estrutural e higienização total</td></tr>
+                                <tr><td>Dedetização geral</td><td>Empresa licenciada (ideal: 3 em 3 meses)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<link rel="icon" type="image/svg+xml" href="favicon.ico">  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michelada - Tierra Mexicana</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    /* Estilos gerais reaproveitados do cardápio */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background: #000;
+      color: #fff;
+      cursor: url('https://i.ibb.co/GQ8F9pdY/logo-32x32-transparente.png'), auto;
+    }
+
+    .animated-bg {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      animation: bg-scroll 80s linear infinite;
+    }
+
+    @keyframes bg-scroll {
+      from { background-position: 0 0; }
+      to { background-position: -500px -500px; }
+    }
+
+    .container {
+      max-width: 700px; 
+      width: 90%; 
+      margin: 40px auto;
+      padding: 20px 30px;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      border: 1px solid #444;
+    }
+
+    h1 {
+      color: #e65100;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.5em;
+    }
+    
+    h2 {
+      color: #e65100;
+      text-align: center;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .section-icon {
+        width: 24px;
+        height: 24px;
+        fill: #e65100;
+    }
+
+    .dish-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border: 2px solid #444;
+    }
+
+    .section-content {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .ingredients-list ul, .preparation-list ol {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .ingredients-list li, .preparation-list li {
+        background-color: #2a2a2a;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 5px;
+        text-align: left;
+    }
+    
+    .preparation-list {
+        counter-reset: step-counter;
+    }
+    
+    .preparation-list li {
+        counter-increment: step-counter;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .preparation-list li::before {
+        content: counter(step-counter);
+        margin-right: 12px;
+        background: #e65100;
+        color: #fff;
+        font-weight: bold;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .nutrition-table th, .nutrition-table td {
+      border: 1px solid #444;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .nutrition-table th {
+      background-color: #e65100;
+      color: #fff;
+    }
+
+    .nutrition-table tr:nth-child(even) {
+      background-color: #2a2a2a;
+    }
+    
+    .nutrition-table caption {
+        font-size: 0.9em;
+        color: #aaa;
+        margin-top: 10px;
+        caption-side: bottom;
+        text-align: center;
+    }
+
+    .chef-tips {
+        background-color: #222;
+        border-left: 4px solid #e65100;
+        padding: 15px 20px;
+        border-radius: 0 8px 8px 0;
+    }
+
+    .back-button {
+      display: block;
+      width: 200px;
+      margin: 40px auto 0;
+      padding: 12px 20px;
+      background-color: #e65100;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.3s;
+      cursor: url('https://i.ibb.co/nsWRSNFc/logo-dedo-32x32-pointer.png'), pointer;
+    }
+
+    .back-button:hover {
+      background-color: #ff9800;
+      transform: scale(1.05);
+    }
+
+    ::selection {
+      background: #ff9800;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body class="animated-bg">
+
+  <div class="container">
+    <h1>Michelada</h1>
+    <img src="https://hips.hearstapps.com/hmg-prod/images/michelada-socialindex-web-2863-rl-del039925-680a6cff5cb20.jpg?crop=0.888888888888889xw:1xh;center,top&resize=1200:*" alt="Imagem de uma Michelada" class="dish-image">
+
+    <div class="description">
+      <h2><svg class="section-icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"></path></svg>Descrição da Bebida</h2>
+      <p class="section-content">
+        Uma forma única e saborosa de beber cerveja. A Michelada é um cocktail mexicano que mistura cerveja clara gelada com sumo de limão, molho inglês, um toque de molho de pimenta e sal. É uma bebida surpreendente, salgada, picante e incrivelmente refrescante.
+      </p>
+    </div>
+
+    <div class="servings">
+      <h2><svg class="section-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v4h-2zm0 6h2v2h-2z"></path></svg>Rendimento</h2>
+      <p class="section-content">1 copo (360ml)</p>
+    </div>
+
+    <div class="ingredients-list">
+      <h2><svg class="section-icon" viewBox="0 0 24 24"><path d="M8 16.59l-4.29-4.3a1 1 0 0 1 1.42-1.42L8 13.75l6.88-6.88a1 1 0 0 1 1.42 1.42L8 16.59z"></path></svg>Ingredientes</h2>
+      <ul class="section-content">
+        <li>330ml de Cerveja clara</li>
+        <li>30ml de Sumo de limão</li>
+        <li>1 colher de chá de Molho inglês</li>
+        <li>Gotas de Molho de pimenta (a gosto)</li>
+        <li>1 pitada de Sal</li>
+        <li>Gelo</li>
+      </ul>
+    </div>
+    
+    <div class="preparation-list">
+        <h2><svg class="section-icon" viewBox="0 0 24 24"><path d="M21.05 13.04c.33-.33.33-.86 0-1.19l-2.7-2.7c-.33-.33-.86-.33-1.19 0l-1.38 1.38c-.06.06-.06.15 0 .21l3.67 3.67c.06.06.15.06.21 0l1.39-1.37zM12.5 2C12.22 2 12 2.22 12 2.5V5h-2V2.5C10 2.22 9.78 2 9.5 2S9 2.22 9 2.5V5H7V2.5C7 2.22 6.78 2 6.5 2S6 2.22 6 2.5V5H4v14h16V5h-2V2.5c0-.28-.22-.5-.5-.5s-.5.22-.5.5V5h-2V2.5c0-.28-.22-.5-.5-.5zM4.06 17.94l1.41-1.41 1.41 1.41-1.41 1.41-1.41-1.41z"></path></svg>Modo de Preparo</h2>
+        <ol class="section-content">
+            <li>Num copo alto com gelo, misture o sumo de limão, o molho inglês, o molho de pimenta e o sal.</li>
+            <li>Incline o copo e complete lentamente com a cerveja para não perder o gás.</li>
+            <li>Mexa suavemente e sirva. Opcionalmente, pode decorar a borda do copo com sal ou pimenta em pó.</li>
+        </ol>
+    </div>
+
+    <div class="nutrition-info">
+      <h2><svg class="section-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>Informação Nutricional</h2>
+      <table class="nutrition-table section-content">
+        <thead>
+          <tr>
+            <th>Nutriente</th>
+            <th>Quantidade por copo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Calorias</td>
+            <td>~150 kcal</td>
+          </tr>
+          <tr>
+            <td>Carboidratos</td>
+            <td>~15g</td>
+          </tr>
+          <tr>
+            <td>Proteínas</td>
+            <td>~1g</td>
+          </tr>
+          <tr>
+            <td>Gorduras Totais</td>
+            <td>~0g</td>
+          </tr>
+          <tr>
+            <td>Álcool</td>
+            <td>~14g</td>
+          </tr>
+        </tbody>
+        <caption>Valores nutricionais aproximados, calculados com base nos ingredientes da receita.</caption>
+      </table>
+    </div>
+    
+    <div class="chef-tips">
+        <h2><svg class="section-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></svg>Dicas do Chef</h2>
+        <p class="section-content">
+            A Michelada é a bebida perfeita para acompanhar pratos de marisco, como o nosso Ceviche Mexicano. O seu sabor salgado e cítrico realça o frescor do peixe. É também uma ótima cura para a ressaca, segundo dizem!
+        </p>
+    </div>
+
+    <a href="../Cardápio/cardapio.html" class="back-button">Voltar ao Cardápio</a>
+  </div>
+
+</body>
+</html>

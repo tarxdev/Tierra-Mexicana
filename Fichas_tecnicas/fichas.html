@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/svg+xml" href="favicon3.svg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra Mexicana - Fichas Técnicas</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 'Cinzel Decorative' & 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <!-- Estilos Personalizados -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+        .font-title {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        .animated-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bg-scroll 80s linear infinite;
+        }
+        @keyframes bg-scroll {
+            from { background-position: 0 0; }
+            to { background-position: -500px -500px; }
+        }
+        .content-card {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+        .accordion-header {
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: rgba(251, 191, 36, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 1px solid #374151;
+        }
+        th {
+            background-color: rgba(251, 191, 36, 0.1);
+            color: #fbbf24;
+        }
+    </style>
+</head>
+
+<body class="animated-bg">
+
+    <!-- Header -->
+    <header class="py-10 text-center">
+        <h1 class="font-title text-4xl sm:text-5xl md:text-6xl text-amber-400">Tierra Mexicana</h1>
+        <p class="text-lg sm:text-xl text-gray-300 mt-2">Fichas Técnicas de Preparo</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+         <main class="container mx-auto px-4 sm:px-6 py-12">
+        <div class="content-card rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12" x-data="fichasData">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl sm:text-4xl font-semibold text-white">Padronização e Controle</h2>
+                <p class="text-gray-400 mt-2 max-w-2xl mx-auto">Cada prato possui uma ficha técnica detalhada para garantir consistência de sabor, qualidade nutricional e controle de custos.</p>
+            </div>
+            <div class="space-y-4">
+                
+            <!-- Estrutura Genérica para Fichas -->
+                <template x-for="(ficha, index) in fichas" :key="ficha.id">
+                    <div class="bg-gray-800/50 rounded-lg">
+                        <button @click="open = (open === ficha.id ? null : ficha.id)" class="accordion-header w-full flex justify-between items-center p-5 text-left">
+                            <span class="text-xl font-semibold text-white" x-text="'Ficha ' + ficha.id + ' - ' + ficha.prato"></span>
+                            <svg :class="{'rotate-180': open === ficha.id}" class="w-6 h-6 text-amber-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open === ficha.id" x-collapse.duration.500ms class="p-5 border-t border-gray-700">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                <div class="lg:col-span-1">
+                                    <img :src="ficha.imagem" :alt="ficha.prato" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                                    <div class="mt-4 bg-gray-900/50 p-4 rounded-lg text-left">
+                                        <h4 class="font-semibold text-white text-lg mb-2">Detalhes</h4>
+                                        <p class="text-sm text-gray-400"><strong>Tempo de Preparo:</strong> <span class="text-white" x-text="ficha.tempo"></span></p>
+                                        <p class="text-sm text-gray-400"><strong>Rendimento:</strong> <span class="text-white" x-text="ficha.rendimento"></span></p>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-2">
+                                    <h3 class="text-xl font-bold text-amber-400 mb-4">Ingredientes</h3>
+                                    <div class="overflow-x-auto">
+                                        <table>
+                                            <thead>
+                                                <tr><th>Ingrediente</th><th>Qtd.</th><th>Peso Bruto</th><th>Peso Líquido</th><th>% Perda</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <template x-for="ing in ficha.ingredientes" :key="ing.nome">
+                                                    <tr>
+                                                        <td x-text="ing.nome"></td>
+                                                        <td x-text="ing.qtd"></td>
+                                                        <td x-text="ing.pb"></td>
+                                                        <td x-text="ing.pl"></td>
+                                                        <td x-text="ing.perda"></td>
+                                                    </tr>
+                                                </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-amber-400 mt-6 mb-4">Modo de Preparo</h3>
+                                    <ol class="list-decimal list-inside text-gray-300 space-y-2">
+                                        <template x-for="passo in ficha.preparo" :key="passo">
+                                            <li x-text="passo"></li>
+                                        </template>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-500">
+        <p>&copy; 2025 Tierra Mexicana - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('fichasData', () => ({
+                open: 1,
+                fichas: [
+                    { 
+                        prato: 'Guacamole', id: 1, tempo: '10 minutos', rendimento: '4 porções', imagem: 'https://i.panelinha.com.br/i1/bk-6619-guacamole.webp',
+                        ingredientes: [
+                            { nome: 'Abacate maduro', qtd: '2 unid médias', pb: '500g', pl: '470g', perda: '6%' },
+                            { nome: 'Tomate sem sementes', qtd: '1 unid média', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Cebola roxa picada', qtd: '1/2 unid média', pb: '60g', pl: '55g', perda: '8%' },
+                            { nome: 'Coentro fresco picado', qtd: '2 col. de sopa', pb: '10g', pl: '10g', perda: '0%' },
+                            { nome: 'Suco de limão', qtd: '2 col. de sopa', pb: '30ml', pl: '30ml', perda: '0%' },
+                            { nome: 'Sal', qtd: 'A gosto', pb: '2g', pl: '2g', perda: '0%' },
+                            { nome: 'Pimenta dedo-de-moça', qtd: '1/2 unid', pb: '10g', pl: '9g', perda: '10%' }
+                        ],
+                        preparo: [ 'Amasse o abacate até formar uma pasta rústica.', 'Adicione os demais ingredientes picados.', 'Misture bem, ajuste o sal e sirva com nachos ou tortillas.' ]
+                    },
+                    { 
+                        prato: 'Elote', id: 2, tempo: '15 minutos', rendimento: '1 unidade', imagem: 'https://www.sogoodblog.com/wp-content/uploads/2014/04/elote-mexican-corn-recipe.jpg',
+                        ingredientes: [
+                            { nome: 'Milho verde (espiga)', qtd: '1 unid', pb: '250g', pl: '230g', perda: '8%' },
+                            { nome: 'Maionese', qtd: '1 col. de sopa', pb: '20g', pl: '20g', perda: '0%' },
+                            { nome: 'Queijo parmesão ralado', qtd: '1 col. de sopa', pb: '10g', pl: '10g', perda: '0%' },
+                            { nome: 'Pimenta em pó', qtd: '1 pitada', pb: '1g', pl: '1g', perda: '0%' },
+                            { nome: 'Suco de limão', qtd: '1 col. de sopa', pb: '15ml', pl: '15ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Cozinhe o milho até ficar macio.', 'Passe a maionese em toda a espiga.', 'Polvilhe queijo, pimenta e regue com limão.' ]
+                    },
+                    { 
+                        prato: 'Quesadilla de Queijo', id: 3, tempo: '10 minutos', rendimento: '1 unidade (duas fatias grandes)', imagem: 'https://cdn.casaeculinaria.com/wp-content/uploads/2024/02/26092424/Quesadilla-1.webp',
+                        ingredientes: [
+                            { nome: 'Tortilla de trigo', qtd: '1 unid grande', pb: '80g', pl: '80g', perda: '0%' },
+                            { nome: 'Queijo muçarela ralado', qtd: '80g', pb: '80g', pl: '80g', perda: '0%' },
+                            { nome: 'Manteiga', qtd: '1 col. chá', pb: '10g', pl: '10g', perda: '0%' }
+                        ],
+                        preparo: [ 'Aqueça a tortilla com manteiga em uma frigideira.', 'Adicione o queijo, dobre a tortilla ao meio.', 'Grelhe dos dois lados até dourar e o queijo derreter.' ]
+                    },
+                    { 
+                        prato: 'Sopa Azteca', id: 4, tempo: '30 minutos', rendimento: '3 porções', imagem: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiP6UYsbdRmMCCzIBy0CVMkwf5y9FsCyVaPw-c9NL08bc1BpALacd3PpPQPB-YlO1uluPxZcnq9d-vbPbDCwYYKi0ayCoDlbFAYbJJcpSLjpXOgnovvgm6wris5F1S3BtA0E4DMi5BKtrIN/s1600/sopa-azteca-tortilla-soup_207-16k2.jpg',
+                        ingredientes: [
+                            { nome: 'Tomate', qtd: '3 unid grandes', pb: '360g', pl: '320g', perda: '11%' },
+                            { nome: 'Cebola branca picada', qtd: '1 unid média', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Alho', qtd: '2 dentes', pb: '10g', pl: '9g', perda: '10%' },
+                            { nome: 'Caldo de frango', qtd: '500ml', pb: '500ml', pl: '500ml', perda: '0%' },
+                            { nome: 'Tortillas em tiras', qtd: '2 unid', pb: '120g', pl: '110g', perda: '8%' },
+                            { nome: 'Queijo fresco em cubos', qtd: '50g', pb: '50g', pl: '50g', perda: '0%' },
+                            { nome: 'Creme de leite', qtd: '30ml', pb: '30ml', pl: '30ml', perda: '0%' },
+                            { nome: 'Azeite', qtd: '1 col. sopa', pb: '15ml', pl: '15ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Refogue a cebola e o alho no azeite.', 'Acrescente os tomates e cozinhe até formar um molho.', 'Bata no liquidificador com o caldo e volte à panela.', 'Sirva com tiras de tortilla, queijo e creme por cima.' ]
+                    },
+                    { 
+                        prato: 'Ceviche Mexicano', id: 5, tempo: '20 minutos + 30 min para marinar', rendimento: '3 porções', imagem: 'https://degustou.com.br/wp-content/uploads/2024/09/546-768x512.jpeg',
+                        ingredientes: [
+                            { nome: 'Filé de peixe branco', qtd: '300g', pb: '300g', pl: '270g', perda: '10%' },
+                            { nome: 'Suco de limão', qtd: '100ml', pb: '100ml', pl: '100ml', perda: '0%' },
+                            { nome: 'Tomate sem sementes', qtd: '1 unid média', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Cebola roxa em rodelas', qtd: '1 unid média', pb: '80g', pl: '70g', perda: '12%' },
+                            { nome: 'Coentro fresco picado', qtd: '2 col. de sopa', pb: '10g', pl: '10g', perda: '0%' },
+                            { nome: 'Pimenta dedo-de-moça', qtd: '1 unid', pb: '10g', pl: '9g', perda: '10%' },
+                            { nome: 'Sal', qtd: 'A gosto', pb: '2g', pl: '2g', perda: '0%' }
+                        ],
+                        preparo: [ 'Corte o peixe em cubos e mergulhe no suco de limão.', 'Deixe marinar por 30 minutos até o peixe "cozinhar".', 'Misture com os demais ingredientes.', 'Sirva gelado.' ]
+                    },
+                    {
+                        prato: 'Nachos Supreme', id: 6, tempo: '15 minutos', rendimento: '3 porções', imagem: 'https://static.itdg.com.br/images/360-240/792c761ced6493faff803623c33db45a/347922-original.jpg',
+                        ingredientes: [
+                            { nome: 'Nachos', qtd: '150g', pb: '150g', pl: '150g', perda: '0%' },
+                            { nome: 'Queijo cheddar cremoso', qtd: '100g', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Feijão refrito', qtd: '100g', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Carne moída temperada', qtd: '150g', pb: '150g', pl: '135g', perda: '10%' },
+                            { nome: 'Creme azedo (sour cream)', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' },
+                            { nome: 'Jalapeños em rodelas', qtd: '10g', pb: '10g', pl: '10g', perda: '0%' },
+                            { nome: 'Cebolinha verde picada', qtd: '1 col. sopa', pb: '5g', pl: '5g', perda: '0%' }
+                        ],
+                        preparo: [ 'Espalhe os nachos em uma travessa.', 'Cubra com queijo, feijão, carne e leve ao forno.', 'Finalize com sour cream, jalapeños e cebolinha.' ]
+                    },
+                    {
+                        prato: 'Tostada Mexicana', id: 7, tempo: '20 minutos', rendimento: '2 unidades', imagem: 'https://cielitolindoamex.com/wp-content/uploads/2022/08/WhatsApp-Image-2022-08-03-at-7.40.19-PM-1.jpeg',
+                        ingredientes: [
+                            { nome: 'Tortilla de milho', qtd: '2 unid', pb: '120g', pl: '120g', perda: '0%' },
+                            { nome: 'Feijão refrito', qtd: '100g', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Carne moída temperada', qtd: '100g', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Alface picada', qtd: '1 xíc.', pb: '50g', pl: '50g', perda: '0%' },
+                            { nome: 'Tomate picado', qtd: '1 unid pequena', pb: '80g', pl: '72g', perda: '10%' },
+                            { nome: 'Queijo ralado', qtd: '40g', pb: '40g', pl: '40g', perda: '0%' },
+                            { nome: 'Sour cream', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' }
+                        ],
+                        preparo: [ 'Torre as tortillas até ficarem crocantes.', 'Espalhe o feijão refrito.', 'Acrescente a carne, vegetais, queijo e finalize com sour cream.' ]
+                    },
+                    {
+                        prato: 'Mini Burrito', id: 8, tempo: '25 minutos', rendimento: '2 unidades', imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqXIFA16c_QkdxYUKI3eWW_TLVRK9BLQBiJg&s',
+                        ingredientes: [
+                            { nome: 'Tortilla de trigo', qtd: '2 unid pequenas', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Arroz mexicano pronto', qtd: '100g', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Carne desfiada', qtd: '120g', pb: '120g', pl: '108g', perda: '10%' },
+                            { nome: 'Feijão refrito', qtd: '80g', pb: '80g', pl: '80g', perda: '0%' },
+                            { nome: 'Alface picada', qtd: '1/2 xíc', pb: '25g', pl: '25g', perda: '0%' },
+                            { nome: 'Queijo ralado', qtd: '40g', pb: '40g', pl: '40g', perda: '0%' },
+                            { nome: 'Molho de tomate', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' }
+                        ],
+                        preparo: [ 'Aqueça a tortilla.', 'Recheie com arroz, carne, feijão e vegetais.', 'Enrole como burrito e sirva com molho por cima.' ]
+                    },
+                    {
+                        prato: 'Mini Chiles Rellenos', id: 9, tempo: '40 minutos', rendimento: '4 porções', imagem: 'https://chickenofthesea.com/wp-content/uploads/2022/04/Mini-Tuna-Chile-Rellenos-1440x1200.jpg',
+                        ingredientes: [
+                            { nome: 'Mini pimentões', qtd: '4 unid pequenas', pb: '300g', pl: '270g', perda: '10%' },
+                            { nome: 'Queijo muçarela ralado', qtd: '120g', pb: '120g', pl: '120g', perda: '0%' },
+                            { nome: 'Ovo', qtd: '1 unid', pb: '50g', pl: '50g', perda: '0%' },
+                            { nome: 'Farinha de trigo', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' },
+                            { nome: 'Sal', qtd: '1 pitada', pb: '1g', pl: '1g', perda: '0%' },
+                            { nome: 'Óleo para fritura', qtd: 'q.b.', pb: '400ml', pl: '400ml', perda: '0%' },
+                            { nome: 'Molho de tomate caseiro', qtd: '4 col. sopa', pb: '80g', pl: '80g', perda: '0%' }
+                        ],
+                        preparo: [ 'Assar os mini pimentões até a pele ficar levemente tostada.', 'Rechear com queijo muçarela ralado.', 'Empanar: passe na farinha de trigo, depois no ovo batido.', 'Fritar em óleo quente até dourar.', 'Servir sobre o molho de tomate.' ]
+                    },
+                    {
+                        prato: 'Taco Mexicano', id: 10, tempo: '25 minutos', rendimento: '2 unidades', imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSskCR0-vqiWM4TZgN8VmYkvGoFRGXXGeFp5A&s',
+                        ingredientes: [
+                            { nome: 'Tortilla de milho', qtd: '3 unid', pb: '180g', pl: '180g', perda: '0%' },
+                            { nome: 'Carne bovina grelhada', qtd: '150g', pb: '150g', pl: '135g', perda: '10%' },
+                            { nome: 'Cebola roxa em tiras', qtd: '1/2 unid média', pb: '60g', pl: '55g', perda: '8%' },
+                            { nome: 'Coentro fresco', qtd: '2 col. sopa', pb: '10g', pl: '10g', perda: '0%' },
+                            { nome: 'Guacamole', qtd: '3 col. sopa', pb: '60g', pl: '60g', perda: '0%' },
+                            { nome: 'Limão', qtd: '1 unid pequena', pb: '50g', pl: '40g', perda: '20%' }
+                        ],
+                        preparo: [ 'Aqueça as tortillas.', 'Recheie com carne, cebola, coentro e guacamole.', 'Sirva com fatias de limão.' ]
+                    },
+                    { 
+                        prato: 'Burrito Especial', id: 11, tempo: '30 minutos', rendimento: '1 unidade grande', imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Y0CcQAklk32hJWreUBCFLkRXWih5dJQ49Q&s',
+                        ingredientes: [
+                            { nome: 'Tortilla de trigo', qtd: '1 unid grande', pb: '120g', pl: '120g', perda: '0%' },
+                            { nome: 'Arroz mexicano', qtd: '100g', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Feijão refrito', qtd: '80g', pb: '80g', pl: '80g', perda: '0%' },
+                            { nome: 'Carne desfiada', qtd: '120g', pb: '120g', pl: '108g', perda: '10%' },
+                            { nome: 'Alface picada', qtd: '1/2 xíc', pb: '25g', pl: '25g', perda: '0%' },
+                            { nome: 'Queijo ralado', qtd: '40g', pb: '40g', pl: '40g', perda: '0%' },
+                            { nome: 'Molho de tomate', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' },
+                            { nome: 'Sour cream', qtd: '1 col. sopa', pb: '15g', pl: '15g', perda: '0%' }
+                        ],
+                        preparo: [ 'Aqueça a tortilla e espalhe o feijão.', 'Acrescente arroz, carne, alface, queijo, molho e sour cream.', 'Enrole o burrito e sirva.' ]
+                    },
+                    { 
+                        prato: 'Enchilada de Frango', id: 12, tempo: '35 minutos', rendimento: '2 unidades', imagem: 'https://www.minhareceita.com.br/app/uploads/2020/10/Enchilada-de-frango-com-arroz-apimentado-G.jpg',
+                        ingredientes: [
+                            { nome: 'Tortilla de milho', qtd: '2 unid', pb: '120g', pl: '120g', perda: '0%' },
+                            { nome: 'Frango desfiado', qtd: '150g', pb: '150g', pl: '135g', perda: '10%' },
+                            { nome: 'Molho de tomate temperado', qtd: '1/2 xíc', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Queijo ralado', qtd: '50g', pb: '50g', pl: '50g', perda: '0%' },
+                            { nome: 'Cebola branca picada', qtd: '1/2 unid média', pb: '60g', pl: '55g', perda: '8%' }
+                        ],
+                        preparo: [ 'Recheie as tortillas com frango e cebola.', 'Enrole e cubra com molho e queijo.', 'Leve ao forno para gratinar.' ]
+                    },
+                    { 
+                        prato: 'Fajitas de Carne', id: 13, tempo: '30 minutos', rendimento: '2 porções', imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8fr01_ABBhWUct3UwVj4fF-8Dn2PLTxy43w&s',
+                        ingredientes: [
+                            { nome: 'Contra-filé em tiras', qtd: '200g', pb: '200g', pl: '180g', perda: '10%' },
+                            { nome: 'Pimentão vermelho', qtd: '1/2 unid', pb: '80g', pl: '70g', perda: '12%' },
+                            { nome: 'Pimentão verde', qtd: '1/2 unid', pb: '80g', pl: '70g', perda: '12%' },
+                            { nome: 'Cebola branca fatiada', qtd: '1 unid média', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Azeite', qtd: '1 col. sopa', pb: '15ml', pl: '15ml', perda: '0%' },
+                            { nome: 'Sal e pimenta', qtd: 'A gosto', pb: '2g', pl: '2g', perda: '0%' }
+                        ],
+                        preparo: [ 'Refogue os legumes com azeite.', 'Acrescente a carne e cozinhe até dourar.', 'Sirva com tortillas ou arroz.' ]
+                    },
+                    { 
+                        prato: 'Chili com Carne', id: 14, tempo: '40 minutos', rendimento: '3 porções', imagem: 'https://conteudo.imguol.com.br/2013/08/08/chili-con-carne-da-rede-si-senor-1375986785533_1920x1080.jpg',
+                        ingredientes: [
+                            { nome: 'Carne moída', qtd: '300g', pb: '300g', pl: '270g', perda: '10%' },
+                            { nome: 'Feijão cozido', qtd: '200g', pb: '200g', pl: '200g', perda: '0%' },
+                            { nome: 'Tomate pelado', qtd: '1/2 lata', pb: '200g', pl: '190g', perda: '5%' },
+                            { nome: 'Cebola picada', qtd: '1 unid média', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Alho', qtd: '2 dentes', pb: '10g', pl: '9g', perda: '10%' },
+                            { nome: 'Pimenta chili em pó', qtd: '1 col. chá', pb: '2g', pl: '2g', perda: '0%' },
+                            { nome: 'Azeite', qtd: '1 col. sopa', pb: '15ml', pl: '15ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Refogue cebola e alho no azeite.', 'Adicione carne, depois o tomate e temperos.', 'Misture o feijão e cozinhe até engrossar.' ]
+                    },
+                    { 
+                        prato: 'Quesadilla de Frango', id: 15, tempo: '15 minutos', rendimento: '1 unidade (2 fatias grandes)', imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdM7Q5cG9XvqmSANP5g4CJ7QSc6rA2E3kQg&s',
+                        ingredientes: [
+                            { nome: 'Tortilla de trigo', qtd: '1 unid grande', pb: '80g', pl: '80g', perda: '0%' },
+                            { nome: 'Frango desfiado', qtd: '100g', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Queijo muçarela ralado', qtd: '80g', pb: '80g', pl: '80g', perda: '0%' },
+                            { nome: 'Manteiga', qtd: '1 col. chá', pb: '10g', pl: '10g', perda: '0%' }
+                        ],
+                        preparo: [ 'Aqueça a tortilla na frigideira com manteiga.', 'Adicione o frango e o queijo.', 'Dobre ao meio e grelhe até o queijo derreter e dourar dos dois lados.' ]
+                    },
+                    { 
+                        prato: 'Taco Vegano', id: 16, tempo: '20 minutos', rendimento: '2 tacos', imagem: 'https://www.luvgourmet.com.br/wp-content/uploads/2015/09/tacos-vegetariano-732x380.jpg',
+                        ingredientes: [
+                            { nome: 'Tortilla de milho', qtd: '2 unid', pb: '120g', pl: '120g', perda: '0%' },
+                            { nome: 'Proteína de soja texturizada', qtd: '100g', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Tomate picado', qtd: '1 unid média', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Cebola roxa', qtd: '1/2 unid média', pb: '60g', pl: '55g', perda: '8%' },
+                            { nome: 'Alface picada', qtd: '1/2 xíc', pb: '25g', pl: '25g', perda: '0%' },
+                            { nome: 'Guacamole', qtd: '2 col. sopa', pb: '40g', pl: '40g', perda: '0%' },
+                            { nome: 'Azeite', qtd: '1 col. sopa', pb: '15ml', pl: '15ml', perda: '0%' },
+                            { nome: 'Sal, pimenta e limão', qtd: 'A gosto', pb: '5g', pl: '5g', perda: '0%' }
+                        ],
+                        preparo: [ 'Hidrate e refogue a proteína de soja com azeite e temperos.', 'Monte os tacos com todos os ingredientes frescos.', 'Sirva imediatamente com limão.' ]
+                    },
+                    { 
+                        prato: 'Combo Fiesta Mexicana', id: 17, tempo: '40 minutos', rendimento: '1 combo (serve 2 pessoas)', imagem: 'https://media-cdn.tripadvisor.com/media/photo-s/10/d6/34/ca/combo-appetizer.jpg',
+                        ingredientes: [
+                            { nome: 'Taco mexicano', qtd: '2 unid', pb: '260g', pl: '240g', perda: '8%' },
+                            { nome: 'Mini burrito', qtd: '1 unid', pb: '170g', pl: '160g', perda: '6%' },
+                            { nome: 'Enchilada de frango', qtd: '1 unid', pb: '180g', pl: '160g', perda: '11%' },
+                            { nome: 'Nachos simples', qtd: '80g', pb: '80g', pl: '80g', perda: '0%' },
+                            { nome: 'Guacamole', qtd: '2 col. sopa', pb: '40g', pl: '40g', perda: '0%' },
+                            { nome: 'Sour cream', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' },
+                            { nome: 'Molho picante', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' }
+                        ],
+                        preparo: [ 'Prepare os pratos individualmente conforme suas fichas.', 'Monte o prato com todos os itens dispostos lado a lado.', 'Sirva com molhos e acompanhamentos de nachos.' ]
+                    },
+                    { 
+                        prato: 'Pozole', id: 18, tempo: '2 horas', rendimento: '4 porções', imagem: 'https://www.tacoguy.com.au/wp-content/uploads/2020/09/Pozole-rojo-side-small.jpg?v=1611015108',
+                        ingredientes: [
+                            { nome: 'Carne suína (paleta/lombo)', qtd: '400g', pb: '400g', pl: '360g', perda: '10%' },
+                            { nome: 'Milho branco para pozole', qtd: '1 ½ xícara', pb: '250g', pl: '250g', perda: '0%' },
+                            { nome: 'Alho', qtd: '2 dentes', pb: '10g', pl: '9g', perda: '10%' },
+                            { nome: 'Cebola branca', qtd: '1 unid média', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Pimenta vermelha seca', qtd: '2 unid', pb: '15g', pl: '12g', perda: '20%' },
+                            { nome: 'Caldo de carne ou água', qtd: '1 litro', pb: '1000ml', pl: '1000ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Cozinhar a carne suína em água com alho e cebola até ficar macia (aprox. 1h30).', 'Preparar a base do caldo: hidrate a pimenta seca e bata no liquidificador com caldo e alho.', 'Adicionar o milho cozido e a carne desfiada ao caldo. Cozinhar por mais 30 minutos.' ]
+                    },
+                    { 
+                        prato: 'Arroz Mexicano', id: 19, tempo: '25 minutos', rendimento: '4 porções', imagem: 'https://cdn-ilddihb.nitrocdn.com/MgqZCGPEMHvMRLsisMUCAIMWvgGMxqaj/assets/images/optimized/rev-cee1f9b/www.goya.com/wp-content/uploads/2023/10/mexican-rice.jpg',
+                        ingredientes: [
+                            { nome: 'Arroz branco', qtd: '1 xíc (cru)', pb: '200g', pl: '200g', perda: '0%' },
+                            { nome: 'Tomate picado', qtd: '1 unid média', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Cebola picada', qtd: '1/2 unid média', pb: '60g', pl: '55g', perda: '8%' },
+                            { nome: 'Alho picado', qtd: '2 dentes', pb: '10g', pl: '9g', perda: '10%' },
+                            { nome: 'Caldo de legumes', qtd: '2 xíc', pb: '480ml', pl: '480ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Refogue a cebola e o alho no azeite.', 'Acrescente o arroz e o tomate e mexa bem.', 'Adicione o caldo e cozinhe até secar.' ]
+                    },
+                    { 
+                        prato: 'Feijão Refrito', id: 20, tempo: '40 minutos', rendimento: '4 porções', imagem: 'https://media.istockphoto.com/id/1352551509/pt/foto/homemade-organic-refried-pinto-beans.jpg?s=612x612&w=0&k=20&c=kIey0Qz3Dq_u7LGMRKGseSWJULG_cqzcKd9-4pZllEk=',
+                        ingredientes: [
+                            { nome: 'Feijão carioca cru', qtd: '1 xíc', pb: '200g', pl: '180g', perda: '10%' },
+                            { nome: 'Cebola picada', qtd: '1 unid pequena', pb: '80g', pl: '72g', perda: '10%' },
+                            { nome: 'Alho picado', qtd: '2 dentes', pb: '10g', pl: '9g', perda: '10%' },
+                            { nome: 'Banha ou óleo', qtd: '1 col. sopa', pb: '15g', pl: '15g', perda: '0%' }
+                        ],
+                        preparo: [ 'Cozinhe o feijão até ficar bem macio.', 'Refogue a cebola e o alho na banha.', 'Amasse o feijão e junte ao refogado, temperando.' ]
+                    },
+                    { 
+                        prato: 'Tamales', id: 21, tempo: '1h15 minutos', rendimento: '4 unidades', imagem: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/newscms/2022_18/1868548/tamales-oaxaquenos-te-main-220504.jpg',
+                        ingredientes: [
+                            { nome: 'Farinha de milho', qtd: '1 xíc', pb: '130g', pl: '130g', perda: '0%' },
+                            { nome: 'Caldo de legumes', qtd: '1/2 xíc', pb: '120ml', pl: '120ml', perda: '0%' },
+                            { nome: 'Manteiga', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' },
+                            { nome: 'Recheio (frango/queijo)', qtd: '100g', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Palha de milho', qtd: '4 folhas médias', pb: '20g', pl: '20g', perda: '0%' }
+                        ],
+                        preparo: [ 'Misture farinha, manteiga e caldo até formar uma massa.', 'Recheie com frango ou queijo e enrole nas palhas.', 'Cozinhe no vapor por 45 minutos.' ]
+                    },
+                    { 
+                        prato: 'Pico de Gallo', id: 22, tempo: '10 minutos', rendimento: '1 xícara', imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu-PKL3ilZGLwWRsFr1QZNk58ubpq14bRO3Q&s',
+                        ingredientes: [
+                            { nome: 'Tomate', qtd: '2 unid médias', pb: '200g', pl: '180g', perda: '10%' },
+                            { nome: 'Cebola roxa picada', qtd: '1/2 unid', pb: '60g', pl: '55g', perda: '8%' },
+                            { nome: 'Coentro fresco', qtd: '2 col. sopa', pb: '10g', pl: '10g', perda: '0%' },
+                            { nome: 'Suco de limão', qtd: '2 col. sopa', pb: '30ml', pl: '30ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Pique tomate, cebola e coentro.', 'Misture com limão e sal.', 'Sirva como acompanhamento ou entrada.' ]
+                    },
+                    { 
+                        prato: 'Sour Cream', id: 23, tempo: '5 minutos', rendimento: '150ml', imagem: 'https://s2-receitas.glbimg.com/s2Kb-EKf_7S5_exZg2AU9vMCa9c=/0x0:1280x853/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_e84042ef78cb4708aeebdf1c68c6cbd6/internal_photos/bs/2020/Z/N/7ClFCvSkaY3gSZRfgHZQ/sour-cream.jpeg',
+                        ingredientes: [
+                            { nome: 'Creme de leite fresco', qtd: '1/2 xíc', pb: '120g', pl: '120g', perda: '0%' },
+                            { nome: 'Limão (suco)', qtd: '2 col. sopa', pb: '30ml', pl: '30ml', perda: '0%' },
+                            { nome: 'Sal', qtd: 'A gosto', pb: '2g', pl: '2g', perda: '0%' }
+                        ],
+                        preparo: [ 'Misture bem os ingredientes até ficar homogêneo.', 'Leve à geladeira por 15 minutos antes de servir.' ]
+                    },
+                    { 
+                        prato: 'Nachos Simples', id: 24, tempo: '5 minutos', rendimento: '2 porções', imagem: 'https://anamariareceitas.com.br/wp-content/uploads/2024/06/20327-768x512.jpg',
+                        ingredientes: [
+                            { nome: 'Nachos de milho', qtd: '100g', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Sal', qtd: 'A gosto', pb: '1g', pl: '1g', perda: '0%' }
+                        ],
+                        preparo: [ 'Disponha os nachos em um prato ou cesta.', 'Salpique sal e sirva com molhos opcionais.' ]
+                    },
+                    { 
+                        prato: 'Batata Mexicana', id: 25, tempo: '35 minutos', rendimento: '3 porções', imagem: 'https://media-cdn.tripadvisor.com/media/photo-s/1c/c6/56/3b/batata-mexicana-batata.jpg',
+                        ingredientes: [
+                            { nome: 'Batata inglesa', qtd: '3 unid médias', pb: '450g', pl: '400g', perda: '11%' },
+                            { nome: 'Páprica defumada', qtd: '1 col. chá', pb: '2g', pl: '2g', perda: '0%' },
+                            { nome: 'Alho em pó', qtd: '1/2 col. chá', pb: '1g', pl: '1g', perda: '0%' },
+                            { nome: 'Azeite', qtd: '2 col. sopa', pb: '30ml', pl: '30ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Corte as batatas em gomos com casca.', 'Misture com os temperos e azeite.', 'Asse por 30 minutos a 200°C ou até dourar.' ]
+                    },
+                    { 
+                        prato: 'Salada de Nopales', id: 26, tempo: '20 minutos', rendimento: '2 porções', imagem: 'https://cdn7.kiwilimon.com/brightcove/6439/640x640/6439.jpg.webp',
+                        ingredientes: [
+                            { nome: 'Nopales frescos', qtd: '1 xíc picada', pb: '150g', pl: '135g', perda: '10%' },
+                            { nome: 'Tomate', qtd: '1 unid média', pb: '100g', pl: '90g', perda: '10%' },
+                            { nome: 'Cebola roxa', qtd: '1/2 unid', pb: '60g', pl: '55g', perda: '8%' },
+                            { nome: 'Coentro', qtd: '2 col. sopa', pb: '10g', pl: '10g', perda: '0%' },
+                            { nome: 'Suco de limão', qtd: '2 col. sopa', pb: '30ml', pl: '30ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Cozinhe os nopales em água com sal por 10 minutos.', 'Escorra e misture com os demais ingredientes.', 'Sirva fria como salada.' ]
+                    },
+                    { 
+                        prato: 'Queso Fundido', id: 27, tempo: '15 minutos', rendimento: '2 porções', imagem: 'https://cdn-ilddihb.nitrocdn.com/MgqZCGPEMHvMRLsisMUCAIMWvgGMxqaj/assets/images/optimized/rev-cee1f9b/www.goya.com/wp-content/uploads/2023/10/queso-fundido.jpg',
+                        ingredientes: [
+                            { nome: 'Queijo muçarela ralado', qtd: '150g', pb: '150g', pl: '150g', perda: '0%' },
+                            { nome: 'Queijo prato ou cheddar', qtd: '100g', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Linguiça calabresa', qtd: '50g', pb: '50g', pl: '45g', perda: '10%' },
+                            { nome: 'Cebola branca picada', qtd: '1/4 unid média', pb: '30g', pl: '28g', perda: '7%' }
+                        ],
+                        preparo: [ 'Refogue a calabresa picada com a cebola no azeite.', 'Em uma travessa, distribua os queijos.', 'Acrescente a calabresa refogada.', 'Leve ao forno para gratinar.' ]
+                    },
+                    { 
+                        prato: 'Churros Mexicanos', id: 28, tempo: '30 minutos', rendimento: '10 unidades', imagem: 'https://receitason.com/wp-content/uploads/2023/10/churros-mexicano.webp',
+                        ingredientes: [
+                            { nome: 'Água', qtd: '1 xíc', pb: '240ml', pl: '240g', perda: '0%' },
+                            { nome: 'Farinha de trigo', qtd: '1 xíc', pb: '130g', pl: '130g', perda: '0%' },
+                            { nome: 'Manteiga', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' },
+                            { nome: 'Ovos', qtd: '2 unid', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Açúcar + canela', qtd: '1/2 xíc', pb: '60g', pl: '60g', perda: '0%' }
+                        ],
+                        preparo: [ 'Ferva água, manteiga, açúcar e sal.', 'Adicione a farinha, mexa até soltar da panela.', 'Acrescente os ovos e misture.', 'Modele os churros com saco de confeitar e frite.', 'Passe no açúcar com canela.' ]
+                    },
+                    { 
+                        prato: 'Flan Mexicano', id: 29, tempo: '1h10 minutos', rendimento: '6 porções', imagem: 'https://www.yummytummyaarthi.com/wp-content/uploads/2020/05/flan.jpeg',
+                        ingredientes: [
+                            { nome: 'Leite condensado', qtd: '1 lata (395g)', pb: '395g', pl: '395g', perda: '0%' },
+                            { nome: 'Leite integral', qtd: '1 xíc', pb: '240ml', pl: '240ml', perda: '0%' },
+                            { nome: 'Ovos', qtd: '3 unid', pb: '150g', pl: '150g', perda: '0%' },
+                            { nome: 'Açúcar (calda)', qtd: '1/2 xíc', pb: '100g', pl: '100g', perda: '0%' }
+                        ],
+                        preparo: [ 'Prepare a calda e despeje em forma de pudim.', 'Bata os ingredientes do flan no liquidificador.', 'Despeje sobre a calda e leve ao forno em banho-maria.', 'Resfrie e desenforme.' ]
+                    },
+                    { 
+                        prato: 'Pastel de Tres Leches', id: 30, tempo: '1 hora', rendimento: '8 porções', imagem: 'https://prettysimplesweet.com/wp-content/uploads/2019/05/Tres-Leches-Cake-500x500.jpg',
+                        ingredientes: [
+                            { nome: 'Ovos', qtd: '4 unid', pb: '200g', pl: '200g', perda: '0%' },
+                            { nome: 'Açúcar', qtd: '1 xíc', pb: '200g', pl: '200g', perda: '0%' },
+                            { nome: 'Farinha de trigo', qtd: '1 xíc', pb: '130g', pl: '130g', perda: '0%' },
+                            { nome: 'Leite condensado', qtd: '1/2 lata', pb: '197g', pl: '197g', perda: '0%' },
+                            { nome: 'Leite evaporado', qtd: '1/2 xíc', pb: '120ml', pl: '120ml', perda: '0%' },
+                            { nome: 'Creme de leite fresco', qtd: '1/2 xíc', pb: '120ml', pl: '120ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Prepare o pão de ló com ovos, açúcar e farinha.', 'Asse, esfrie e fure com garfo.', 'Misture os "3 leites" e despeje sobre o bolo.', 'Leve à geladeira por 2h antes de servir.' ]
+                    },
+                    { 
+                        prato: 'Paleta Mexicana', id: 31, tempo: '6 horas (gelar)', rendimento: '6 paletas', imagem: 'https://http2.mlstatic.com/D_NQ_NP_683030-MLB43195249324_082020-O.webp',
+                        ingredientes: [
+                            { nome: 'Morango', qtd: '300g', pb: '300g', pl: '270g', perda: '10%' },
+                            { nome: 'Açúcar', qtd: '3 col. sopa', pb: '45g', pl: '45g', perda: '0%' },
+                            { nome: 'Água', qtd: '1 xíc', pb: '240ml', pl: '240ml', perda: '0%' },
+                            { nome: 'Leite condensado', qtd: '6 col. sopa', pb: '120g', pl: '120g', perda: '0%' }
+                        ],
+                        preparo: [ 'Bata o morango, açúcar, água e limão.', 'Despeje metade nas forminhas, congele 1h.', 'Recheie com leite condensado e cubra com mais suco.', 'Leve ao congelador por 5h.' ]
+                    },
+                    { 
+                        prato: 'Arroz Doce', id: 32, tempo: '6 horas (gelar)', rendimento: '6 paletas', imagem: 'https://catracalivre.com.br/wp-content/uploads/2023/07/arroz-doce.jpg',
+                        ingredientes: [
+                            { nome: 'Arroz branco', qtd: '1/2 xíc', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Leite integral', qtd: '3 xíc', pb: '720ml', pl: '720ml', perda: '0%' },
+                            { nome: 'Leite condensado', qtd: '1/2 lata', pb: '197g', pl: '197g', perda: '0%' },
+                            { nome: 'Canela em pau', qtd: '1 unid', pb: '5g', pl: '5g', perda: '0%' }
+                        ],
+                        preparo: [ 'Cozinhe o arroz com leite e canela até ficar bem macio.', 'Acrescente o leite condensado e misture até engrossar.', 'Retire a canela e sirva quente ou gelado.' ]
+                    },
+                    { 
+                        prato: 'Cocada Mexicana', id: 33, tempo: '25 minutos', rendimento: '10 unidades', imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVJzh6qcbrj-OpvIUjVPYimE9w9jYvNkxaXA&s',
+                        ingredientes: [
+                            { nome: 'Coco ralado fresco', qtd: '2 xíc', pb: '200g', pl: '200g', perda: '0%' },
+                            { nome: 'Açúcar', qtd: '1 xíc', pb: '200g', pl: '200g', perda: '0%' },
+                            { nome: 'Leite condensado', qtd: '1/2 lata', pb: '197g', pl: '197g', perda: '0%' },
+                            { nome: 'Gema de ovo', qtd: '2 unid', pb: '40g', pl: '40g', perda: '0%' }
+                        ],
+                        preparo: [ 'Misture tudo até formar uma massa firme.', 'Modele as cocadas com colher.', 'Leve ao forno a 180°C por 20 minutos ou até dourar.' ]
+                    },
+                    { 
+                        prato: 'Gelatina Colorida', id: 34, tempo: '6 horas (gelar)', rendimento: '6 porções', imagem: 'https://s2-receitas.glbimg.com/lf2gVQSADIEB8f2CMauwoHSiIn0=/0x0:1366x768/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2022/O/O/F2rTweSQqqBQM7XCG7Zg/gelatina-colorida-receita.jpg',
+                        ingredientes: [
+                            { nome: 'Gelatina sabor morango', qtd: '1 caixa', pb: '35g', pl: '35g', perda: '0%' },
+                            { nome: 'Gelatina sabor Limão', qtd: '1 caixa', pb: '35g', pl: '35g', perda: '0%' },
+                            { nome: 'Gelatina sabor uva', qtd: '1 caixa', pb: '35g', pl: '35g', perda: '0%' },
+                            { nome: 'Leite condensado', qtd: '1/2 lata', pb: '197g', pl: '197g', perda: '0%' },
+                            { nome: 'Gelatina incolor', qtd: '1 envelope', pb: '12g', pl: '12g', perda: '0%' }
+                        ],
+                        preparo: [ 'Prepare cada sabor de gelatina separadamente e leve para gelar.', 'Corte em cubos e misture delicadamente.', 'Hidrate a gelatina incolor e misture com leite condensado e leite.', 'Junte os cubos e leve para gelar por 4h.' ]
+                    },
+                    { 
+                        prato: 'Buñuelos', id: 35, tempo: '50 minutos', rendimento: '8 unidades', imagem: 'https://hudsoncocina.com.mx/cdn/shop/articles/Receta-de-Bunuelos-Mexicanos-e1645640282523-1020x600_jpg.webp?v=1704812964',
+                        ingredientes: [
+                            { nome: 'Farinha de trigo', qtd: '2 xícaras', pb: '260g', pl: '260g', perda: '0%' },
+                            { nome: 'Água morna', qtd: '3/4 xícara', pb: '180ml', pl: '180ml', perda: '0%' },
+                            { nome: 'Manteiga', qtd: '2 col. sopa', pb: '30g', pl: '30g', perda: '0%' },
+                            { nome: 'Ovos', qtd: '1 unidade', pb: '50g', pl: '50g', perda: '0%' },
+                            { nome: 'Açúcar e canela', qtd: '1/2 xícara', pb: '100g', pl: '100g', perda: '0%' }
+                        ],
+                        preparo: [ 'Misture os ingredientes secos. Adicione ovos, manteiga e água aos poucos até formar uma massa lisa.', 'Sove a massa e deixe descansar por 30 minutos.', 'Abra discos finos e frite em óleo quente.', 'Passe na mistura de açúcar e canela.' ]
+                    },
+                    { 
+                        prato: 'Margarita Tradicional', id: 36, tempo: '5 minutos', rendimento: '1 copo (150ml)', imagem: 'https://nectarlife.com/cdn/shop/articles/Copy_of_Margarita_8895318b-e41e-4296-82af-b0d333546ef9.jpg?v=1563399744',
+                        ingredientes: [
+                            { nome: 'Tequila', qtd: '50ml', pb: '50ml', pl: '50ml', perda: '0%' },
+                            { nome: 'Suco de limão', qtd: '30ml', pb: '30ml', pl: '30ml', perda: '0%' },
+                            { nome: 'Triple sec (licor)', qtd: '20ml', pb: '20ml', pl: '20ml', perda: '0%' },
+                            { nome: 'Gelo', qtd: '1/2 xíc', pb: '80g', pl: '80g', perda: '0%' }
+                        ],
+                        preparo: [ 'Passe limão na borda do copo e mergulhe no sal.', 'Bata todos os líquidos com gelo na coqueteleira.', 'Sirva coado no copo.' ]
+                    },
+                    { 
+                        prato: 'Margarita de Morango', id: 37, tempo: '5 minutos', rendimento: '1 copo (200ml)', imagem: 'https://paribar.com.br/wp-content/uploads/2022/03/marguerita-de-morango-1.jpg',
+                        ingredientes: [
+                            { nome: 'Tequila', qtd: '50ml', pb: '50ml', pl: '50ml', perda: '0%' },
+                            { nome: 'Morangos congelados', qtd: '1/2 xíc', pb: '75g', pl: '65g', perda: '13%' },
+                            { nome: 'Suco de limão', qtd: '20ml', pb: '20ml', pl: '20ml', perda: '0%' },
+                            { nome: 'Triple sec (licor)', qtd: '20ml', pb: '20ml', pl: '20ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Bata tudo no liquidificador até ficar cremoso.', 'Sirva com canudo e borda decorada com açúcar ou sal.' ]
+                    },
+                    { 
+                        prato: 'Michelada', id: 38, tempo: '3 minutos', rendimento: '1 copo (360ml)', imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT50WUMpuCz3fYSsy_graR--w0QxoHsn64_Q&s',
+                        ingredientes: [
+                            { nome: 'Cerveja clara', qtd: '330ml', pb: '330ml', pl: '330ml', perda: '0%' },
+                            { nome: 'Suco de limão', qtd: '30ml', pb: '30ml', pl: '30ml', perda: '0%' },
+                            { nome: 'Molho inglês', qtd: '1 col. chá', pb: '5ml', pl: '5ml', perda: '0%' },
+                            { nome: 'Molho de pimenta', qtd: 'Gotas', pb: '3g', pl: '3g', perda: '0%' }
+                        ],
+                        preparo: [ 'Misture os temperos no copo com gelo.', 'Complete com a cerveja lentamente.', 'Sirva com borda de sal (opcional).' ]
+                    },
+                    { 
+                        prato: 'Água Fresca de Hibisco', id: 39, tempo: '10 minutos', rendimento: '1 litro (4 porções)', imagem: 'https://images.cookforyourlife.org/wp-content/uploads/2015/08/shutterstock_1081702016-1536x1024-1.jpg',
+                        ingredientes: [
+                            { nome: 'Flores secas de hibisco', qtd: '2 col. sopa', pb: '10g', pl: '10g', perda: '0%' },
+                            { nome: 'Água', qtd: '1 litro', pb: '1000ml', pl: '1000ml', perda: '0%' },
+                            { nome: 'Açúcar', qtd: '3 col. sopa', pb: '45g', pl: '45g', perda: '0%' }
+                        ],
+                        preparo: [ 'Ferva água com hibisco e desligue.', 'Coe, adoce e esfrie.', 'Sirva com gelo.' ]
+                    },
+                    { 
+                        prato: 'Água de Horchata', id: 40, tempo: '6 horas (hidratação)', rendimento: '1 litro (4 porções)', imagem: 'https://www.estadao.com.br/resizer/v2/P7ANN7OIJ5FM3EH74RTCDCXWUU.jpg?quality=80&auth=6ec00018f61a46289dc4f3069b64ed49b249963d77265767331ca5ca0867d52a&width=720&height=410&smart=true',
+                        ingredientes: [
+                            { nome: 'Arroz branco cru', qtd: '1/2 xíc', pb: '100g', pl: '100g', perda: '0%' },
+                            { nome: 'Água', qtd: '3 xíc', pb: '720ml', pl: '720ml', perda: '0%' },
+                            { nome: 'Canela em pau', qtd: '1 unid', pb: '5g', pl: '5g', perda: '0%' },
+                            { nome: 'Leite condensado', qtd: '1/2 lata', pb: '197g', pl: '197g', perda: '0%' }
+                        ],
+                        preparo: [ 'Hidrate o arroz com canela em água por 6h.', 'Bata tudo no liquidificador, coe e adicione o leite condensado.', 'Sirva com gelo.' ]
+                    },
+                    { 
+                        prato: 'Tequila Shot', id: 41, tempo: 'imediato', rendimento: '1 shot (50ml)', imagem: 'https://olmecatequila.com/wp-content/uploads/shot-with-tequila.jpg',
+                        ingredientes: [
+                            { nome: 'Tequila prata', qtd: '50ml', pb: '50ml', pl: '50ml', perda: '0%' },
+                            { nome: 'Sal', qtd: '1 pitada', pb: '1g', pl: '1g', perda: '0%' },
+                            { nome: 'Limão (1 fatia)', qtd: '1 unid', pb: '15g', pl: '15g', perda: '0%' }
+                        ],
+                        preparo: [ 'Sirva a tequila gelada no shot.', 'Acompanhe com limão e sal.' ]
+                    },
+                    { 
+                        prato: 'Refrigerante Mexicano', id: 42, tempo: '0 min', rendimento: '1 unidade (350ml)', imagem: 'https://preview.redd.it/is-mexican-soda-better-than-american-soda-v0-f6sk7md6kxkc1.jpg?width=640&crop=smart&auto=webp&s=af2709fcad6f9efca329bf69fd882732f43ca21c',
+                        ingredientes: [
+                            { nome: 'Refrigerante mexicano', qtd: '1 garrafa', pb: '350ml', pl: '350ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Sirva gelado com copo ou direto da garrafa.' ]
+                    },
+                    { 
+                        prato: 'Água Mineral', id: 43, tempo: 'nenhum', rendimento: '1 unidade (500ml)', imagem: 'https://www.delgo.com.br/imagens/como-e-feito-o-envase-de-agua-mineral.jpg',
+                        ingredientes: [
+                            { nome: 'Água mineral', qtd: '1 garrafa', pb: '500ml', pl: '500ml', perda: '0%' }
+                        ],
+                        preparo: [ 'Sirva gelada.' ]
+                    },
+                    {
+                        prato: 'Cafe de Olla', id: 44, tempo: '20 minutos', rendimento: '4 xícaras (120ml cada)', imagem: 'https://www.cocinadelirante.com/sites/default/files/images/2023/11/como-preparar-cafe-de-olla-con-cafe-instantaneo.jpg',
+                        ingredientes: [
+                            { nome: 'Água', qtd: '600ml', pb: '600ml', pl: '600ml', perda: '0%' },
+                            { nome: 'Café moído (forte)', qtd: '4 col. sopa', pb: '40g', pl: '40g', perda: '0%' },
+                            { nome: 'Canela em pau', qtd: '1 unid grande', pb: '10g', pl: '10g', perda: '0%' },
+                            { nome: 'Piloncillo (açúcar mascavo)', qtd: '4 col. sopa', pb: '60g', pl: '60g', perda: '0%' }
+                        ],
+                        preparo: [
+                            'Ferva a água com canela e piloncillo por 10-15 minutos.',
+                            'Desligue o fogo, adicione o café moído e deixe em infusão por 5 minutos.',
+                            'Coe e sirva quente.'
+                        ]
+                    }
+                    ] // fecha o array fichas
+                    }));
+                    });
+                    </script>

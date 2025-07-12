@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="icon" type="image/svg+xml" href="favicon6.svg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra Mexicana - Estoque e Boas Práticas</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: 'Cinzel Decorative' & 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #e5e7eb;
+            overflow-x: hidden; /* Previne scroll horizontal */
+        }
+        .font-title {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        
+        /* Fundo animado com padrão SVG */
+        .animated-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a2a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bg-scroll 80s linear infinite;
+        }
+        @keyframes bg-scroll {
+            from { background-position: 0 0; }
+            to { background-position: -500px -500px; }
+        }
+
+        /* Estilo para tabelas */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #374151; /* gray-700 */
+        }
+        thead th {
+            background-color: rgba(17, 24, 39, 0.5); /* gray-900/50 */
+            font-weight: 600;
+            text-align: left;
+        }
+        tbody tr:hover {
+            background-color: rgba(55, 65, 81, 0.4); /* gray-700/40 */
+        }
+    </style>
+</head>
+
+<body class="animated-bg">
+
+    <main class="w-full min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-10">
+        <!-- Container principal do conteúdo -->
+        <div class="bg-gray-800/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl max-w-5xl w-full">
+            <h1 class="text-4xl md:text-5xl font-title text-center text-amber-400 mb-10">Estoque e Boas Práticas</h1>
+
+            <!-- Seção de Estrutura e Organização -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-amber-400 pl-4">📦 Estrutura e Organização dos Estoques</h2>
+                
+                <!-- Divisão dos Estoques -->
+                <div class="p-4 bg-black/20 rounded-lg overflow-x-auto mb-8">
+                    <h3 class="text-xl font-semibold text-amber-400 mb-3">📁 1. Divisão dos Estoques:</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Tipo de Estoque</th><th>Área recomendada</th><th>Função Principal</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Estoque seco</td><td>6–8 m²</td><td>Armazenar produtos não perecíveis (grãos, temperos etc)</td></tr>
+                            <tr><td>Câmara fria</td><td>3–4 m²</td><td>Armazenar perecíveis refrigerados (0 a 5 °C)</td></tr>
+                            <tr><td>Freezer / Congelado</td><td>2–3 m²</td><td>Armazenar carnes, pescados, pré-preparos congelados (≤ –18 °C)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Regras de Armazenamento -->
+                <div class="p-4 bg-black/20 rounded-lg">
+                    <h3 class="text-xl font-semibold text-amber-400 mb-4">📌 2. Regras de Armazenamento (Boas Práticas)</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-200">✅ Padrões físicos:</h4>
+                            <ul class="list-disc list-inside text-gray-300 pl-4">
+                                <li>20 cm do chão, 5 cm da parede, 50 cm do teto.</li>
+                                <li>Prateleiras de metal ou plástico lavável, sem ferrugem.</li>
+                                <li>Alimentos separados por tipo: farináceos, conservas, descartáveis, limpeza (isolado).</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-200">✅ Identificação:</h4>
+                            <ul class="list-disc list-inside text-gray-300 pl-4">
+                                <li>Etiqueta de identificação com nome, lote e validade.</li>
+                                <li>Rótulo legível e original do fabricante.</li>
+                                <li>Caixas abertas devem ser fechadas com filme ou clipe e reetiquetadas.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-200">✅ Armazenamento de câmara fria:</h4>
+                            <ul class="list-disc list-inside text-gray-300 pl-4">
+                                <li>Alimentos prontos acima dos crus.</li>
+                                <li>Não usar caixas de papelão na câmara (absorvem umidade e fungos).</li>
+                                <li>Temperatura monitorada 2x ao dia, com termômetro visível.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-200">✅ Freezer (congelados):</h4>
+                            <ul class="list-disc list-inside text-gray-300 pl-4">
+                                <li>Produtos separados por categoria (carne, frango, sobremesa).</li>
+                                <li>Ficha de controle de entrada e saída, com data de congelamento.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Rotinas e Registros -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-amber-400 pl-4">📋 Boas Práticas de Estoque – Rotinas e Registros</h2>
+                <!-- FIFO -->
+                <div class="p-4 bg-black/20 rounded-lg mb-8">
+                    <h3 class="text-xl font-semibold text-amber-400 mb-3">🔄 1. FIFO (First In, First Out)</h3>
+                    <ul class="list-disc list-inside text-gray-300">
+                        <li>Produtos com menor validade devem ser usados primeiro.</li>
+                        <li>Fichas de controle ajudam no rodízio correto.</li>
+                    </ul>
+                </div>
+                <!-- Higiene dos Estoques -->
+                <div class="p-4 bg-black/20 rounded-lg overflow-x-auto">
+                    <h3 class="text-xl font-semibold text-amber-400 mb-3">🧽 2. Higiene dos Estoques</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Área</th><th>Frequência</th><th>Produto de Limpeza</th><th>Observações</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Prateleiras</td><td>Semanal</td><td>Detergente + álcool 70%</td><td>Remover todos os itens antes da limpeza</td></tr>
+                            <tr><td>Piso e paredes</td><td>Semanal</td><td>Desinfetante clorado</td><td>Utilizar sinalização se molhado</td></tr>
+                            <tr><td>Câmaras frias</td><td>Quinzenal</td><td>Água + hipoclorito</td><td>Fazer com equipamento desligado</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Seção de Planilhas e Proibições -->
+            <div>
+                 <h2 class="text-2xl font-bold text-white mb-6 border-l-4 border-amber-400 pl-4">Controles e Restrições</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Planilhas de Controle -->
+                    <div class="p-4 bg-black/20 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-400 mb-3">📊 Planilhas de Controle Recomendadas</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-1">
+                            <li>Controle de temperatura das câmaras (2x/dia)</li>
+                            <li>Ficha de recebimento de produtos (checklist ANVISA)</li>
+                            <li>Ficha de validade e lote em prateleiras</li>
+                            <li>Ficha de limpeza semanal (assinatura e horário)</li>
+                            <li>Lista de produtos em quarentena ou descarte</li>
+                        </ul>
+                    </div>
+                    <!-- O que NÃO pode -->
+                    <div class="p-4 bg-red-900/30 border border-red-500/50 rounded-lg">
+                        <h3 class="text-xl font-semibold text-red-400 mb-3">❌ O que NÃO pode nos estoques:</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-1">
+                            <li>Produtos de limpeza junto a alimentos.</li>
+                            <li>Alimentos no chão ou empilhados sem base.</li>
+                            <li>Produtos vencidos, sem rótulo ou abertos sem etiqueta.</li>
+                            <li>Papéis, madeira ou material absorvente nas câmaras.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
